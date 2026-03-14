@@ -1,0 +1,730 @@
+[
+  {
+    "filename": "software-properties-drivers.desktop",
+    "name": "Additional Drivers",
+    "icon_name": "jockey",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/jockey.svg",
+    "exec": "gtk-launch software-properties-drivers.desktop",
+    "is_pinned": true
+  },
+  {
+    "filename": "nm-connection-editor.desktop",
+    "name": "Advanced Network Configuration",
+    "icon_name": "preferences-system-network",
+    "icon_path": "/usr/share/icons/Humanity/categories/48/preferences-system-network.svg",
+    "exec": "gtk-launch nm-connection-editor.desktop",
+    "is_pinned": true
+  },
+  {
+    "filename": "org.gnome.DejaDup.desktop",
+    "name": "Back Up",
+    "icon_name": "org.gnome.DejaDup",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.DejaDup.svg",
+    "exec": "gtk-launch org.gnome.DejaDup.desktop",
+    "is_pinned": true
+  },
+  {
+    "filename": "blueman-adapters.desktop",
+    "name": "Bluetooth Adapters",
+    "icon_name": "blueman-device",
+    "icon_path": "/usr/share/icons/hicolor/scalable/devices/blueman-device.svg",
+    "exec": "gtk-launch blueman-adapters.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "blueman-manager.desktop",
+    "name": "Bluetooth Manager",
+    "icon_name": "blueman",
+    "icon_path": "/usr/share/icons/hicolor/48x48/status/blueman.png",
+    "exec": "gtk-launch blueman-manager.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "btop.desktop",
+    "name": "btop++",
+    "icon_name": "btop",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/btop.png",
+    "exec": "gtk-launch btop.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "thunar-bulk-rename.desktop",
+    "name": "Bulk Rename",
+    "icon_name": "org.xfce.thunar",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png",
+    "exec": "gtk-launch thunar-bulk-rename.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Calculator.desktop",
+    "name": "Calculator",
+    "icon_name": "org.gnome.Calculator",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Calculator.svg",
+    "exec": "gtk-launch org.gnome.Calculator.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Calendar.desktop",
+    "name": "Calendar",
+    "icon_name": "org.gnome.Calendar",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Calendar.svg",
+    "exec": "gtk-launch org.gnome.Calendar.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "calf.desktop",
+    "name": "Calf Plugin Pack for JACK",
+    "icon_name": "calf",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/calf.png",
+    "exec": "gtk-launch calf.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Snapshot.desktop",
+    "name": "Camera",
+    "icon_name": "org.gnome.Snapshot",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Snapshot.svg",
+    "exec": "gtk-launch org.gnome.Snapshot.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Characters.desktop",
+    "name": "Characters",
+    "icon_name": "org.gnome.Characters",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Characters.svg",
+    "exec": "gtk-launch org.gnome.Characters.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.clocks.desktop",
+    "name": "Clocks",
+    "icon_name": "org.gnome.clocks",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.clocks.svg",
+    "exec": "gtk-launch org.gnome.clocks.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "cmatrix.desktop",
+    "name": "CMatrix",
+    "icon_name": "cmatrix",
+    "icon_path": "/usr/share/icons/hicolor/128x128/apps/cmatrix.png",
+    "exec": "gtk-launch cmatrix.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.baobab.desktop",
+    "name": "Disk Usage Analyzer",
+    "icon_name": "org.gnome.baobab",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.baobab.svg",
+    "exec": "gtk-launch org.gnome.baobab.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.DiskUtility.desktop",
+    "name": "Disks",
+    "icon_name": "org.gnome.DiskUtility",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.DiskUtility.svg",
+    "exec": "gtk-launch org.gnome.DiskUtility.desktop",
+    "is_pinned": true
+  },
+  {
+    "filename": "nwg-displays.desktop",
+    "name": "Displays Settings",
+    "icon_name": "nwg-displays",
+    "icon_path": "/usr/share/pixmaps/nwg-displays.svg",
+    "exec": "gtk-launch nwg-displays.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "simple-scan.desktop",
+    "name": "Document Scanner",
+    "icon_name": "org.gnome.SimpleScan",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.SimpleScan.svg",
+    "exec": "gtk-launch simple-scan.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "com.github.wwmm.easyeffects.desktop",
+    "name": "Easy Effects",
+    "icon_name": "com.github.wwmm.easyeffects",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/com.github.wwmm.easyeffects.svg",
+    "exec": "gtk-launch com.github.wwmm.easyeffects.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Extensions.desktop",
+    "name": "Extensions",
+    "icon_name": "org.gnome.Extensions",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Extensions.svg",
+    "exec": "gtk-launch org.gnome.Extensions.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "thunar-settings.desktop",
+    "name": "File Manager Settings",
+    "icon_name": "org.xfce.thunar",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png",
+    "exec": "gtk-launch thunar-settings.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.FileRoller.desktop",
+    "name": "File Roller",
+    "icon_name": "org.gnome.FileRoller",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.FileRoller.svg",
+    "exec": "gtk-launch org.gnome.FileRoller.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "filezilla.desktop",
+    "name": "FileZilla",
+    "icon_name": "filezilla",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/filezilla.png",
+    "exec": "gtk-launch filezilla.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.font-viewer.desktop",
+    "name": "Fonts",
+    "icon_name": "org.gnome.font-viewer",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.font-viewer.svg",
+    "exec": "gtk-launch org.gnome.font-viewer.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.codeberg.dnkl.foot.desktop",
+    "name": "Foot",
+    "icon_name": "foot",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/foot.png",
+    "exec": "gtk-launch org.codeberg.dnkl.foot.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.codeberg.dnkl.footclient.desktop",
+    "name": "Foot Client",
+    "icon_name": "foot",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/foot.png",
+    "exec": "gtk-launch org.codeberg.dnkl.footclient.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.codeberg.dnkl.foot-server.desktop",
+    "name": "Foot Server",
+    "icon_name": "foot",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/foot.png",
+    "exec": "gtk-launch org.codeberg.dnkl.foot-server.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "net.freerct.FreeRCT.desktop",
+    "name": "FreeRCT",
+    "icon_name": "net.freerct.FreeRCT",
+    "icon_path": "/usr/share/icons/hicolor/256x256/apps/net.freerct.FreeRCT.png",
+    "exec": "gtk-launch net.freerct.FreeRCT.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Totem.desktop",
+    "name": "Fullscreen",
+    "icon_name": "org.gnome.Totem",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/org.gnome.Totem.svg",
+    "exec": "gtk-launch org.gnome.Totem.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "gnome-system-monitor-kde.desktop",
+    "name": "GNOME System Monitor",
+    "icon_name": "org.gnome.SystemMonitor",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.SystemMonitor.svg",
+    "exec": "gtk-launch gnome-system-monitor-kde.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "gparted.desktop",
+    "name": "GParted",
+    "icon_name": "gparted",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/gparted.png",
+    "exec": "gtk-launch gparted.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "gsmartcontrol.desktop",
+    "name": "GSmartControl",
+    "icon_name": "gsmartcontrol",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/gsmartcontrol.png",
+    "exec": "gtk-launch gsmartcontrol.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "yelp.desktop",
+    "name": "Help",
+    "icon_name": "org.gnome.Yelp",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Yelp.svg",
+    "exec": "gtk-launch yelp.desktop",
+    "is_pinned": true
+  },
+  {
+    "filename": "htop.desktop",
+    "name": "Htop",
+    "icon_name": "htop",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/htop.svg",
+    "exec": "gtk-launch htop.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.freedesktop.IBus.Setup.desktop",
+    "name": "IBus Preferences",
+    "icon_name": "ibus-setup",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/ibus-setup.svg",
+    "exec": "gtk-launch org.freedesktop.IBus.Setup.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "yad-icon-browser.desktop",
+    "name": "Icon Browser",
+    "icon_name": "yad",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/yad.png",
+    "exec": "gtk-launch yad-icon-browser.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Loupe.desktop",
+    "name": "Image Viewer",
+    "icon_name": "org.gnome.Loupe",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Loupe.svg",
+    "exec": "gtk-launch org.gnome.Loupe.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.eog.desktop",
+    "name": "Image Viewer",
+    "icon_name": "org.gnome.eog",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.eog.svg",
+    "exec": "gtk-launch org.gnome.eog.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "display-im6.q16.desktop",
+    "name": "ImageMagick (color depth=q16)",
+    "icon_name": "display-im6.q16",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/display-im6.q16.png",
+    "exec": "gtk-launch display-im6.q16.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "im-config.desktop",
+    "name": "Input Method",
+    "icon_name": "input-keyboard",
+    "icon_path": "/usr/share/icons/Humanity/devices/48/input-keyboard.svg",
+    "exec": "gtk-launch im-config.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "kitty.desktop",
+    "name": "kitty",
+    "icon_name": "kitty",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/kitty.svg",
+    "exec": "gtk-launch kitty.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "kvantummanager.desktop",
+    "name": "Kvantum Manager",
+    "icon_name": "kvantum",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/kvantum.svg",
+    "exec": "gtk-launch kvantummanager.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.kde.kwave.desktop",
+    "name": "Kwave Sound Editor",
+    "icon_name": "kwave",
+    "icon_path": "/usr/share/icons/Adwaita/scalable/mimetypes/application-x-executable.svg",
+    "exec": "gtk-launch org.kde.kwave.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "gnome-language-selector.desktop",
+    "name": "Language Support",
+    "icon_name": "preferences-desktop-locale",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/preferences-desktop-locale.svg",
+    "exec": "gtk-launch gnome-language-selector.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Logs.desktop",
+    "name": "Logs",
+    "icon_name": "org.gnome.Logs",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Logs.svg",
+    "exec": "gtk-launch org.gnome.Logs.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Shotwell.desktop",
+    "name": "Manage Different Profiles In Shotwell",
+    "icon_name": "org.gnome.Shotwell",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.gnome.Shotwell.png",
+    "exec": "gtk-launch org.gnome.Shotwell.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "libreoffice-startcenter.desktop",
+    "name": "Math",
+    "icon_name": "libreoffice-startcenter",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png",
+    "exec": "gtk-launch libreoffice-startcenter.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.xfce.mousepad.desktop",
+    "name": "Mousepad Preferences",
+    "icon_name": "org.xfce.mousepad",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.xfce.mousepad.png",
+    "exec": "gtk-launch org.xfce.mousepad.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "mpv.desktop",
+    "name": "mpv Media Player",
+    "icon_name": "mpv",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/mpv.svg",
+    "exec": "gtk-launch mpv.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "libreoffice-writer.desktop",
+    "name": "New Document",
+    "icon_name": "document-new",
+    "icon_path": "/usr/share/icons/Humanity/actions/48/document-new.svg",
+    "exec": "gtk-launch libreoffice-writer.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.gedit.desktop",
+    "name": "New Document",
+    "icon_name": "org.gnome.gedit",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.gedit.svg",
+    "exec": "gtk-launch org.gnome.gedit.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "libreoffice-draw.desktop",
+    "name": "New Drawing",
+    "icon_name": "document-new",
+    "icon_path": "/usr/share/icons/Humanity/actions/48/document-new.svg",
+    "exec": "gtk-launch libreoffice-draw.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "code.desktop",
+    "name": "New Empty Window",
+    "icon_name": "vscode",
+    "icon_path": "/usr/share/pixmaps/vscode.png",
+    "exec": "gtk-launch code.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "libreoffice-math.desktop",
+    "name": "New Formula",
+    "icon_name": "document-new",
+    "icon_path": "/usr/share/icons/Humanity/actions/48/document-new.svg",
+    "exec": "gtk-launch libreoffice-math.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "google-chrome.desktop",
+    "name": "New Incognito Window",
+    "icon_name": "google-chrome",
+    "icon_path": "/usr/local/share/icons/hicolor/48x48/apps/google-chrome.png",
+    "exec": "gtk-launch google-chrome.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "brave-browser.desktop",
+    "name": "New Incognito Window",
+    "icon_name": "brave-browser",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/brave-browser.png",
+    "exec": "gtk-launch brave-browser.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "libreoffice-impress.desktop",
+    "name": "New Presentation",
+    "icon_name": "document-new",
+    "icon_path": "/usr/share/icons/Humanity/actions/48/document-new.svg",
+    "exec": "gtk-launch libreoffice-impress.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "libreoffice-calc.desktop",
+    "name": "New Spreadsheet",
+    "icon_name": "document-new",
+    "icon_path": "/usr/share/icons/Humanity/actions/48/document-new.svg",
+    "exec": "gtk-launch libreoffice-calc.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Nautilus.desktop",
+    "name": "New Window",
+    "icon_name": "org.gnome.Nautilus",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/org.gnome.Nautilus.svg",
+    "exec": "gtk-launch org.gnome.Nautilus.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.TextEditor.desktop",
+    "name": "New Window",
+    "icon_name": "org.gnome.TextEditor",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.TextEditor.svg",
+    "exec": "gtk-launch org.gnome.TextEditor.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Evince.desktop",
+    "name": "New Window",
+    "icon_name": "org.gnome.Evince",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Evince.svg",
+    "exec": "gtk-launch org.gnome.Evince.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "nvtop.desktop",
+    "name": "nvtop",
+    "icon_name": "nvtop",
+    "icon_path": "/usr/share/icons/nvtop.svg",
+    "exec": "gtk-launch nvtop.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "com.obsproject.Studio.desktop",
+    "name": "OBS Studio",
+    "icon_name": "com.obsproject.Studio",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/com.obsproject.Studio.svg",
+    "exec": "gtk-launch com.obsproject.Studio.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "firefox.desktop",
+    "name": "Open a New Private Window",
+    "icon_name": "firefox",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/firefox.png",
+    "exec": "gtk-launch firefox.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.seahorse.Application.desktop",
+    "name": "Passwords and Keys",
+    "icon_name": "org.gnome.seahorse.Application",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.seahorse.Application.svg",
+    "exec": "gtk-launch org.gnome.seahorse.Application.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.PowerStats.desktop",
+    "name": "Power Statistics",
+    "icon_name": "org.gnome.PowerStats",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.gnome.PowerStats.png",
+    "exec": "gtk-launch org.gnome.PowerStats.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Terminal.desktop",
+    "name": "Preferences",
+    "icon_name": "org.gnome.Terminal",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Terminal.svg",
+    "exec": "gtk-launch org.gnome.Terminal.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "psensor.desktop",
+    "name": "Psensor",
+    "icon_name": "psensor",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/psensor.png",
+    "exec": "gtk-launch psensor.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "pavucontrol.desktop",
+    "name": "PulseAudio Volume Control",
+    "icon_name": "multimedia-volume-control",
+    "icon_path": "/org/gtk/libgtk/icons/16x16/actions/multimedia-volume-control.png",
+    "exec": "gtk-launch pavucontrol.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "qalculate-gtk.desktop",
+    "name": "Qalculate!",
+    "icon_name": "qalculate",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/qalculate.png",
+    "exec": "gtk-launch qalculate-gtk.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "qt6ct.desktop",
+    "name": "Qt6 Settings",
+    "icon_name": "preferences-desktop-theme",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/preferences-desktop-theme.svg",
+    "exec": "gtk-launch qt6ct.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.remmina.Remmina.desktop",
+    "name": "Quit",
+    "icon_name": "org.remmina.Remmina",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.remmina.Remmina.png",
+    "exec": "gtk-launch org.remmina.Remmina.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "thunar-volman-settings.desktop",
+    "name": "Removable Drives and Media",
+    "icon_name": "org.xfce.volman",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.xfce.volman.png",
+    "exec": "gtk-launch thunar-volman-settings.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Settings.desktop",
+    "name": "Settings",
+    "icon_name": "org.gnome.Settings",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Settings.svg",
+    "exec": "gtk-launch org.gnome.Settings.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "software-properties-gtk.desktop",
+    "name": "Software & Updates",
+    "icon_name": "software-properties",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/software-properties.png",
+    "exec": "gtk-launch software-properties-gtk.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "update-manager.desktop",
+    "name": "Software Updater",
+    "icon_name": "system-software-update",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/system-software-update.svg",
+    "exec": "gtk-launch update-manager.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "transmission-gtk.desktop",
+    "name": "Start Transmission Minimized",
+    "icon_name": "transmission",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/transmission.svg",
+    "exec": "gtk-launch transmission-gtk.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "gnome-session-properties.desktop",
+    "name": "Startup Applications",
+    "icon_name": "session-properties",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/session-properties.svg",
+    "exec": "gtk-launch gnome-session-properties.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "usb-creator-gtk.desktop",
+    "name": "Startup Disk Creator",
+    "icon_name": "usb-creator-gtk",
+    "icon_path": "/usr/share/icons/Humanity/apps/48/usb-creator-gtk.svg",
+    "exec": "gtk-launch usb-creator-gtk.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.Rhythmbox3.desktop",
+    "name": "Stop & Quit",
+    "icon_name": "org.gnome.Rhythmbox3",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.Rhythmbox3.svg",
+    "exec": "gtk-launch org.gnome.Rhythmbox3.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.SystemMonitor.desktop",
+    "name": "System Monitor",
+    "icon_name": "org.gnome.SystemMonitor",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.SystemMonitor.svg",
+    "exec": "gtk-launch org.gnome.SystemMonitor.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "texdoctk.desktop",
+    "name": "TeXdoctk",
+    "icon_name": null,
+    "icon_path": null,
+    "exec": "gtk-launch texdoctk.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "info.desktop",
+    "name": "TeXInfo",
+    "icon_name": "dialog-information",
+    "icon_path": "/usr/share/icons/Humanity/status/48/dialog-information.svg",
+    "exec": "gtk-launch info.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "texstudio.desktop",
+    "name": "TeXstudio",
+    "icon_name": "texstudio",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/texstudio.png",
+    "exec": "gtk-launch texstudio.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.xfce.mousepad-settings.desktop",
+    "name": "Text Editor Settings",
+    "icon_name": "org.xfce.mousepad",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.xfce.mousepad.png",
+    "exec": "gtk-launch org.xfce.mousepad-settings.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "timeshift-gtk.desktop",
+    "name": "Timeshift",
+    "icon_name": "timeshift",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/timeshift.png",
+    "exec": "gtk-launch timeshift-gtk.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "thunar.desktop",
+    "name": "Trash",
+    "icon_name": "org.xfce.thunar",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png",
+    "exec": "gtk-launch thunar.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "org.gnome.tweaks.desktop",
+    "name": "Tweaks",
+    "icon_name": "org.gnome.tweaks",
+    "icon_path": "/usr/share/icons/hicolor/scalable/apps/org.gnome.tweaks.svg",
+    "exec": "gtk-launch org.gnome.tweaks.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "vim.desktop",
+    "name": "Vim",
+    "icon_name": "gvim",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/gvim.png",
+    "exec": "gtk-launch vim.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "xarchiver.desktop",
+    "name": "Xarchiver",
+    "icon_name": "xarchiver",
+    "icon_path": "/usr/share/icons/hicolor/48x48/apps/xarchiver.png",
+    "exec": "gtk-launch xarchiver.desktop",
+    "is_pinned": false
+  },
+  {
+    "filename": "Zoom.desktop",
+    "name": "Zoom Workplace",
+    "icon_name": "Zoom",
+    "icon_path": "/usr/share/pixmaps/Zoom.png",
+    "exec": "gtk-launch Zoom.desktop",
+    "is_pinned": false
+  }
+]

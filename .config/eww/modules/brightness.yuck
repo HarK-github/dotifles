@@ -1,0 +1,30 @@
+(defwidget brightness_scale []
+  (overlay :hexpand true
+    (scale :min 0 :max 101
+           :value {brightness_percent ?: 0}
+           :onchange "brightnessctl set {}%"
+           :class "brightness-scale")
+
+    (label :halign "start"
+           :class "brightness-icon"
+           :text {brightness_percent < 33 
+                  ? "󰃞" 
+                  : (brightness_percent < 67 ? "󰃟" : "󰃠")})
+  )
+)
+
+(defwidget brightness_control_center []
+  (box :orientation "h" :class "brightness-control-center" :space-evenly false
+    (brightness_scale)
+    
+    ;; A "Night Light" or Low Brightness toggle button
+    (button :class "brightness-low ${brightness_percent < 15 ? 'active' : ''}" 
+            :onclick "brightnessctl set 10%" 
+            "󰛩")
+    
+    ;; Arrow button to match your volume layout
+    (button :class "brightness-arrow" 
+            :onclick "scripts/toggle_control_center.sh close" 
+            "󰅂")
+  )
+)

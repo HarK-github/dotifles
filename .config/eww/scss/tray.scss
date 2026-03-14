@@ -1,0 +1,62 @@
+.tray_box {
+    @include window;
+    min-width: 10rem;
+    min-height: 1.5rem;
+    /* Theme Match */
+    background-color: rgba(30, 30, 46, 0.6); 
+    border-radius: 15px; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tray_button {
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+    transition: 0.3s;
+    font-size: 1.5rem;
+    color: $onSurface; // Ensure visibility against dark background
+}
+
+.tray_button:hover {
+    /* Using a transparent mix for the hover state */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tooltip {
+    background-color: rgba(30, 30, 46, 0.8); // Slightly higher opacity for text readability
+    color: $onSurface;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+menu {
+    background-color: rgba(30, 30, 46, 0.6);
+    border-radius: 1rem;
+    padding: 0.75rem;
+    color: $onSurface;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* style.css */
+.taskbaricon {
+    min-width: 32px;
+    min-height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.taskbar-button-pad {
+    padding: 5px;
+}
+menu > menuitem {
+    padding: 0.5rem 1rem;
+    transition: 0.3s;
+    border-radius: 1rem;
+}
+
+menu > menuitem:hover {
+    /* Subtle highlight instead of solid mix */
+    background-color: rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,28 @@
+
+(defwidget bar []
+    (box :class "bar-widget" :orientation "h" :space-evenly true
+
+        (box :orientation "h" :space-evenly false :halign "start"
+           
+            (workspaces)
+        )
+
+      (box :orientation "h" :space-evenly false :halign "center"
+      
+	       (box :orientation "h" :space-evenly false :halign "center" :spacing 10
+            (start_menu_button)
+            
+            (calendar_button)
+            
+        )
+	  )
+        (box :orientation "h" :space-evenly false :halign "end"
+            (tray_button)
+            (language)
+            (picker)
+            (indicator)
+        )
+
+    )
+    
+)

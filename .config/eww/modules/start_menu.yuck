@@ -1,0 +1,161 @@
+;; --- POLLS & VARS ---
+(defpoll cpu_val :interval "3s" "top -bn1 | grep 'Cpu(s)' | sed 's/.*, *\\([0-9.]*\\)%* id.*/\\1/' | awk '{print 100 - $1}'")
+(defpoll ram_val :interval "5s" "free -m | awk '/Mem:/ { printf(\"%0.0f\", $3/$2*100) }'")
+(defpoll temp_val :interval "3s" "cat /sys/class/thermal/thermal_zone0/temp | awk '{print int($1/1000)}'")
+(defpoll uptime_val :interval "1m" "uptime -p | sed 's/up //'")
+(defpoll storage_used :interval "1m" "df -h / | awk 'NR==2 {print $3}'")
+(defpoll storage_total :interval "1h" "df -h / | awk 'NR==2 {print $2}'")
+(defpoll distro_name :interval "24h" "grep '^PRETTY_NAME' /etc/os-release | cut -d '\"' -f 2")
+
+(defvar start_menu_open false)
+(defvar start_menu_search "")
+(defvar start_menu_search_results "[]")
+(defvar start_menu_view "pinned")
+(defvar username "User")
+
+;; --- LISTENERS ---
+(deflisten start_menu_allapps :initial "[]" "/usr/bin/python3 ~/.config/eww/scripts/start_menu_allapps.py")
+(deflisten start_menu_pinned_data :initial "[]" "/usr/bin/python3 ~/.config/eww/scripts/start_menu_pinned.py")
+
+;; --- WIDGETS ---
+
+(defwidget profile-card []
+  (box :class "winstart-profile-box" :orientation "v" :space-evenly false :spacing 15 :halign "center" :valign "center"
+    (box :class "winstart-profile-img" 
+         :height 90 :width 90 
+         :style "background-image: url('images/profile.png');")
+    (label :class "winstart-profile-name" :text "Harshit Kandpal")))
+
+(defwidget fetch-info []
+  (box :class "winstart-fetch-box" :orientation "v" :space-evenly false :spacing 15 :valign "center"
+    (box :space-evenly false :spacing 15
+      (label :class "fetch-icon" :text "")
+      (label :class "fetch-text" :text distro_name))
+    (box :space-evenly false :spacing 15
+      (label :class "fetch-icon" :text "󰅐")
+      (label :class "fetch-text" :text uptime_val))
+    (box :space-evenly false :spacing 15
+      (label :class "fetch-icon" :text "󰋊")
+      (label :class "fetch-text" :text "${storage_used} / ${storage_total} used"))))
+
+(defwidget circ-stat [name val icon]
+  (box :class "winstart-stat-box" :tooltip "${name}: ${val}%" :halign "center" :vexpand false :hexpand false
+    (overlay
+      (circular-progress :class "winstart-stat-bg" :value 100 :thickness 8 :height 90 :width 90)
+      (circular-progress :class "winstart-stat-progress" :value {val ?: 0} :thickness 8 :height 90 :width 90)
+      (label :class "winstart-stat-label" :text icon :halign "center" :valign "center"))))
+
+(defwidget start_menu_button []
+  (button :class "start-menu-button" :onclick "~/.config/eww/scripts/toggle_start_menu.sh"
+    (image :path "images/svg/dark/win.png" :image-width 28 :image-height 28)))
+
+(defwidget pinned-folder [folder_rows]
+  (box :class "winstart-folder-container" :orientation "v" :space-evenly false :spacing 8
+    (box :class "winstart-folder-grid" :orientation "v" :space-evenly true
+      (for row in folder_rows
+        (box :orientation "h" :space-evenly true
+          (for app in row
+            (eventbox :onrightclick "~/.config/eww/scripts/start_menu_pin.sh ${app.filename}"
+              (button :class "winstart-folder-icon-button" :onclick "gtk-launch ${app.filename} & eww update start_menu_open=false"
+                ;; Increased from 24 to 32
+                (image :path {app.icon_path != "null" ? app.icon_path : "images/svg/dark/app.svg"} :image-width 32 :image-height 32)))))))
+    (label :text "Pinned Group" :class "winstart-folder-label" :halign "center")))
+
+(defwidget pinned-app [app]
+  (eventbox :cursor "pointer" :onclick "gtk-launch ${app.filename} & eww update start_menu_open=false" :onrightclick "~/.config/eww/scripts/start_menu_pin.sh ${app.filename}"
+    (box :class "winstart-pinnedapps-entry" :orientation "v" :space-evenly false :spacing 10
+      (box :halign "center" :valign "center" :height 60
+        ;; Increased from 35 to 48
+        (image :path {app.icon_path != "null" ? app.icon_path : "images/svg/dark/app.svg"} :image-width 48 :image-height 48 :class "winstart-pinnedapps-icon"))
+      (label :text {app.name} :class "wintoggle-text" :limit-width 12 :halign "center"))))
+
+
+;; --- MAIN WINDOW ---
+(defwindow start-menu
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry :x "540" :y "30" :anchor "bottom center" :width 950 :height "1px")
+  :namespace "eww"
+  :focusable "ondemand"
+  (revealer :transition "slideup" :reveal start_menu_open :duration "300ms"
+    (box :class "start-menu-container" :orientation "h" :space-evenly false :spacing 15
+      
+      ;; Left side - Main Start Menu
+      (box :class "start-menu-window" :orientation "v" :space-evenly false 
+        
+        ;; 1. TOP SECTION (Search)
+        (box :class "winwin-top" :orientation "v" :space-evenly false
+          (box :class "winstart-search-prompt" :space-evenly false :vexpand false :valign "start"
+            (label :text "󰍉" :class "winstart-search-searchbox-icon")
+            (input :class "winstart-search-contents" :onchange "eww update start_menu_search='{}' && ~/.config/eww/scripts/start_menu_search.sh '{}' &")))
+
+        ;; 2. CENTER SECTION
+        (box :class "winwin-center-noseparator" :height 600
+          (stack :selected {start_menu_search == "" ? 0 : 1} :transition "crossfade"
+            
+            ;; PANE 0: DASHBOARD
+            (stack :selected {start_menu_view == "pinned" ? 0 : 1} :transition "slideleft"
+              
+              ;; VIEW 0: PINNED ONLY
+              (box :orientation "v" :space-evenly false
+                (box :class "winsearch-section-box" :space-evenly true
+                  (label :text "Pinned" :halign "start" :class "winstart-section")
+                  (button :class "winstart-button-allapps" :halign "end" :onclick "eww update start_menu_view='all'"
+                    (box :spacing 8 (label :text "All apps") (label :text "󰄾"))))
+                
+                (scroll :vscroll true :hscroll false :height 500 :class "winstart-pinnedapps"
+                  (box :orientation "v" :space-evenly false :spacing 25
+                    (for main_row in {start_menu_pinned_data}
+                      (box :orientation "h" :space-evenly false :spacing 25 :halign "start"
+                        (for folder in main_row
+                          (pinned-folder :folder_rows folder)))))))
+
+              ;; VIEW 1: ALL APPS LIST
+              (box :orientation "v" :space-evenly false
+                (box :class "winsearch-section-box" :space-evenly true
+                  (button :class "winstart-button-allapps" :halign "start" :onclick "eww update start_menu_view='pinned'"
+                    (box :spacing 8 (label :text "󰄼") (label :text "Pinned")))
+                  (label :text "All apps" :halign "end" :class "winstart-section"))
+                
+                (scroll :vscroll true :class "winstart-allapps-box" :height 500
+                  (box :orientation "v" :spacing 5
+                    (for app in {start_menu_allapps}
+                      (eventbox :onrightclick "~/.config/eww/scripts/start_menu_pin.sh ${app.filename}"
+                        (button :class "winstart-allapps-app" :onclick "gtk-launch ${app.filename} & eww update start_menu_open=false"
+                          (box :orientation "h" :space-evenly false :spacing 20
+                            ;; Increased from 28 to 36
+                            (image :path {app.icon_path != "null" ? app.icon_path : "images/svg/dark/appgeneric.svg"} :image-height 36 :image-width 36)
+                            (label :text {app.name} :class "wintoggle-text")))))))))
+
+            ;; PANE 1: SEARCH RESULTS
+            (scroll :vscroll true :class "winstart-allapps-box"
+              (box :orientation "v" :spacing 5 :space-evenly false :vexpand false :valign "start"
+                (for app in {start_menu_search_results}
+                  (button :class "winstart-allapps-app" :onclick "gtk-launch ${app.filename} & eww update start_menu_search='' && eww update start_menu_open=false"
+                    (box :orientation "h" :space-evenly false :spacing 20
+                      ;; Increased from 28 to 36
+                      (image :path {app.icon_path != "null" ? app.icon_path : "images/svg/dark/appgeneric.svg"} :image-height 36 :image-width 36)
+                      (label :text {app.name} :class "wintoggle-text"))))))))
+
+        ;; 3. BOTTOM BAR
+        (centerbox :orientation "h" :class "winwin-bottom winstart-bottom-pad" :height 70
+          (button :halign "start" :class "winstart-user" :onclick "gnome-control-center user-accounts &"
+            (box :space-evenly false :spacing 15
+              (box :class "winstart-user-icon" :style "background-image: url('images/profile.png'); background-size: cover;")
+              (label :class "wintoggle-text" :text "${username}")))
+          (box)
+          (box :halign "end" :class "winstart-power-placeholder"
+            (box :width 60)))) 
+      
+      ;; Right side - System Tray
+      (box :class "system-tray-content" :orientation "v" :space-evenly false :vexpand false
+        (box :class "system-tray-section" :orientation "v" :spacing 20 :vexpand false
+          (profile-card)
+          (fetch-info))
+        (box :class "system-tray-separator" :hexpand true :style "margin: 15px 0;")
+        (box :class "system-tray-section" :orientation "v" :spacing 20 :vexpand false
+          (label :text "System Status" :halign "center" :class "system-tray-section-title")
+          (box :orientation "h" :space-evenly true :vexpand false
+            (circ-stat :name "CPU" :val cpu_val :icon "󰻠")
+            (circ-stat :name "RAM" :val ram_val :icon "󰍛")
+            (circ-stat :name "TEMP" :val temp_val :icon "󰔄")))))))

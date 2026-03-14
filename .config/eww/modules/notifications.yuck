@@ -1,0 +1,81 @@
+(defwidget notification [notify]
+    (box :orientation "v" :space-evenly false :hexpand true :class "notification-container"
+        (box :orientation "h" :space-evenly false :hexpand true :class "notification-info"
+            (image :valign "start" 
+                   :class "notification-image" 
+                   :visible {notify.image != "null"} 
+                   :path {notify.image}                 ; fixed
+                   :image-width 48 
+                   :image-height 48)
+            
+            (box :orientation "v" :space-evenly false :hexpand true
+                (box :orientation "h" :space-evenly false
+                    (label :halign "start" 
+                          :class "notification-app" 
+                          :visible {notify.app != "null" && notify.app != ""} 
+                          :text {notify.app})           ; fixed
+                    (button :hexpand true 
+                           :halign "end" 
+                           :class "notification-close" 
+                           :onclick "/usr/bin/python3 scripts/notifications_daemon.py close ${notify.id}" 
+                           "󰅖")
+                )
+                
+                (label :halign "start" 
+                      :class "notification-summary" 
+                      :visible {notify.summary != "null" && notify.summary != ""} 
+                      :wrap true 
+                      :markup {notify.summary})         ; fixed
+                
+                (label :halign "start" 
+                      :class "notification-body" 
+                      :visible {notify.body != "null" && notify.body != ""} 
+                      :wrap true 
+                      :markup {notify.body})             ; fixed
+            )
+        )
+        
+        (box :orientation "h" 
+             :space-evenly false 
+             :class "notification-action-box"
+             :visible {arraylength(notify.actions) > 0}
+            (for action in {notify.actions}
+                (button :class "notif-action-btn"
+                        :onclick "/usr/bin/python3 scripts/notifications_daemon.py action ${notify.id} ${action[0]}"
+                        {action[1]}))   ; this is already correct
+        )
+    )
+)
+(defwidget notifications_center [data]  ; Add parameter here
+    (box :orientation "v" :space-evenly false :class "notifications-center"
+        ; Header
+        (box :orientation "h" :space-evenly true :class "notifications-header"
+            (label :class "notifications-header-text" 
+                   :halign "start" 
+                   :text "Notifications")
+            (button :halign "end" 
+                   :class "notifications-clear-button" 
+                   :onclick "/usr/bin/python3 scripts/notifications_daemon.py clear" 
+                   "Clear all")
+        )
+        
+        ; Scrollable notifications list
+        (scroll :vscroll true :class "notifications-scroll"
+            (box :orientation "v" :space-evenly false
+                ; Show notifications - use the parameter
+                (for notify in {data.notifications}  ; Fixed: use parameter with braces
+                    (box :orientation "h" :space-evenly false :class "notification-box"
+                        (notification :notify notify)
+                    )
+                )
+                
+                ; Empty state
+                (label :vexpand true 
+                       :valign "center" 
+                       :class "notifications-empty"
+                       :text "No notifications" 
+                       :visible {data.count == 0})  ; Fixed: use parameter
+            )
+        )
+    )
+)

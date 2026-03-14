@@ -1,0 +1,6 @@
+.control-center {
+    @include window;
+    /* Use RGBA, not HEX, to let the blur show through */
+    background-color: rgba(30, 30, 46, 0.6) ;
+}
+ 

@@ -1,0 +1,43 @@
+// Windows 11 Blue & Dark Theme
+// Inspired by the official Windows 11 dark theme with accent blue
+
+$primary: #4cc2ff;           // Windows 11 accent blue - vibrant, modern
+$onPrimary: #0a0c0c;         // Near black for contrast on blue
+
+$primaryContainer: #1a3b4f;   // Darker blue for containers
+$onPrimaryContainer: #b8e6ff; // Light blue text on dark containers
+
+$secondary: #7f7f7f;          // Neutral gray for secondary elements
+$onSecondary: #f0f0f0;        // Light text on gray
+
+$secondaryContainer: #3a3a3a;  // Dark gray container
+$onSecondaryContainer: #e0e0e0; // Light gray text
+
+$tertiary: #9c6b9c;           // Subtle purple accent for variety
+$onTertiary: #f0e6f0;         // Light text on purple
+
+$tertiaryContainer: #2d1f2d;   // Dark purple container
+$onTertiaryContainer: #e4cce4; // Light purple text
+
+$error: #ff5f5f;              // Softer red for errors
+$onError: #1a0c0c;            // Dark text on error
+
+$errorContainer: #5a2e2e;      // Dark red container
+$onErrorContainer: #ffb3b3;    // Light red text
+
+$background: #1c1c1c;          // Windows 11 dark mode background (not pure black)
+$onBackground: #f0f0f0;        // Primary text on background
+
+$surface: #252525;             // Slightly lighter than background for cards
+$onSurface: #f0f0f0;           // Text on surface
+
+$surfaceVariant: #323232;       // Mica-like surface variant
+$onSurfaceVariant: #c0c0c0;     // Secondary text
+
+$outline: #505050;             // Subtle borders
+$shadow: #000000;              // Black shadows
+
+$inverseSurface: #e0e0e0;       // Light surface for inverse
+$inverseOnSurface: #1c1c1c;     // Dark text on inverse
+
+$inversePrimary: #4cc2ff;       // Same blue, used in inverse contexts

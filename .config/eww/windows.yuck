@@ -1,0 +1,137 @@
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :width "100%"
+                        :anchor "bottom center"
+                    )
+    :exclusive true
+    :namespace "eww"
+    (bar)
+)
+
+(defwindow control_center
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry
+                    :anchor "bottom right"
+                    :width "2px"
+                    :height "2px"
+                )
+    :namespace "eww"
+    (control_centers)
+)
+(defwindow calendar_popup
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry :anchor "bottom center"
+                        :y "80px" 
+                        :width "400px"  ;; Increased slightly for the new border/padding
+                        :height "450px")
+    :namespace "eww"
+    (cal_widget)
+)
+(defwindow launcher
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry
+                    :anchor "left bottom"
+                    :width "2px"
+                    :height "2px"
+                )
+    :focusable true
+    :namespace "eww"
+    (launcher)
+)
+(defwindow calendar_popup
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry :anchor "bottom center"
+                      :x "0px"
+                      :y "10px" 
+                      :width "350px"
+                      :height "280px")
+  :namespace "eww" 
+  (cal_widget)
+)
+	(defwindow notifications_popup    
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry
+                    :anchor "top center"
+                    :width "400px"
+                    :height "100px"
+                    :y "20px"
+                )
+    :namespace "eww"
+    (notifications_popup_widget))
+
+(defwindow osd
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry 
+                    :anchor "bottom center"
+                    :width "2px"
+                    :height "2px"
+                )
+    :namespace "eww"
+    (volume_osd)
+)
+
+(defwindow powermenu
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry 
+                    :anchor "center"
+                    :width "100%"
+                    :height "120%")
+    :namespace "eww-blur"
+    (powermenu)
+)
+
+(defwindow recorder_menu
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry 
+                    :anchor "center"
+                    :width "100%"
+                    :height "120%")
+    :namespace "eww-blur"
+    (recorder_menu)
+)
+
+(defwindow tray
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry 
+                    :anchor "bottom left"
+                    :width "2px"
+                    :height "2px"
+                    :x "82%"
+                )
+    :namespace "eww"
+    (tray)
+)
+
+(defwindow bg_widgets
+    :monitor 0
+    :stacking "bg"
+    :geometry (geometry 
+                    :anchor "center"
+                    :width "100%"
+                    :height "100%")
+    :namespace "eww"
+    (bg_widgets)
+)
+(defwindow start-menu
+  :monitor 0
+  :geometry (geometry :x "540"  ;; Adjusted to account for tray width
+                     :y "30"
+                     :anchor "bottom center"
+                     :width 910  ;; 600px (menu) + 300px (tray) + 10px spacing
+                     :height 500)
+  :reserve (struts :side "b" :distance "0px")
+  :windowtype "normal" 
+  :focusable "ondemand"
+   (revealer :transition "slideup"
+            :reveal start_menu_open
+            :duration "300ms"
+  (start_menu)))

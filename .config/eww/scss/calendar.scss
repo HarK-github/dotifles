@@ -1,0 +1,41 @@
+/* Use your existing notification-center logic for the popup */
+.calendar-window-container {
+    @include window; // Reusing your existing window mixin
+  
+}
+
+/* Force the internal GTK calendar to inherit your notification theme */
+.calendar-box {
+    background-color: $surfaceVariant;
+    color: $onSurface;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    calendar { 
+        color: $onSurface;
+
+        header {
+            color: $primary;
+            font-weight: bold;
+        }
+
+        button {
+            color: $onSurface;
+            &:hover {
+                background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+            }
+        }
+
+        /* Today's date highlight */
+        highlight {
+            color: $primary;
+        }
+        
+        /* Fix for the selected day background */
+        &:selected {
+            background-color: $primary;
+            color: $onPrimary;
+            border-radius: 0.5rem;
+        }
+    }
+}

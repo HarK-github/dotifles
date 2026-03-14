@@ -1,0 +1,31 @@
+(defvar notification_data '{"count": 0, "notifications": [], "popups": []}')
+(defwidget control_centers []
+  (revealer 
+
+            :reveal {open_control_center} 
+            :transition "slideleft" 
+            :duration "300ms"
+            
+    (box :orientation "v" 
+         :space-evenly false 
+         :width 200
+
+      
+      ;; 1. Music Player Component
+      (music)
+
+      ;; 2. Notifications Component - PASS THE DATA HERE
+       (notifications_center :data notification_data)
+
+      ;; 3. System Controls Group
+      (box :orientation "v" 
+           :space-evenly false 
+           :class "control-center" 
+        (user)
+        (quick_settings)
+        (volume_control_center)
+		    (brightness_control_center)
+      )
+    )
+  )
+)

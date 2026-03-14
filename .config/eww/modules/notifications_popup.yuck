@@ -1,0 +1,21 @@
+(defwidget notifications_popup_widget []
+  (box :orientation "v" 
+       :space-evenly false 
+       :class "popups-container"
+       :visible {arraylength(notification_data.popups) > 0}   ;; Only show when there are notifications
+       (box :orientation "v" 
+            :space-evenly false
+            (for popup in {notification_data.popups}
+              (revealer :transition "slidedown" 
+                        :reveal true
+                        :duration "350ms"
+                (box :orientation "h" 
+                     :space-evenly false 
+                     :class "popup-box"
+                  (notification :notify popup)
+                )
+              )
+            )
+       )
+  )
+)

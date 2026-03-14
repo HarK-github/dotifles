@@ -1,0 +1,199 @@
+/* --- GLOBALS & VARIABLES --- */
+$surface: rgba(30, 30, 46, 0.6);         /* Main Glass Background */
+$surface-hover: rgba(255, 255, 255, 0.1);/* Hover state */
+$border-glass: rgba(255, 255, 255, 0.15);/* Frosted border */
+$accent-color: #89b4fa;                  /* Soft blue accent (Catppuccin inspired) */
+$text-primary: #cdd6f4;
+$text-secondary: #a6adc8;
+
+scrollbar { background-color: transparent; }
+scrollbar slider {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    min-width: 6px; /* Slightly thicker scrollbar for Pro UI */
+}
+
+/* --- MAIN CONTAINERS --- */
+.start-menu-container { background-color: transparent; }
+
+.start-menu-window,
+.system-tray-content {
+    background-color: $surface; 
+    border-radius: 15px; /* Unified bubbly corners */
+     border: 1px solid rgba(255, 255, 255, 0.1)
+}
+
+/* --- LEFT PANEL: START MENU --- */
+.start-menu-window { min-width: 500px; /* Wider for larger icons */ }
+
+.winwin-top { padding: 25px 25px 15px 25px; }
+.winwin-center-noseparator { padding: 15px 25px; }
+.winwin-bottom {
+    background-color: rgba(30, 30, 46, 0.8); /* Slightly darker base */
+    border-radius: 0 0 15px 15px;
+     border: 1px solid rgba(255, 255, 255, 0.1)
+    
+}
+.winstart-bottom-pad { padding: 15px 25px; }
+
+/* Search Box */
+.winstart-search-prompt {
+    background-color: rgba(15, 15, 25, 0.4);
+    border: 1px solid $border-glass;
+    border-radius: 24px;
+    padding: 12px 20px;
+}
+.winstart-search-searchbox-icon {
+    color: $accent-color;
+    font-size: 20px; /* Larger icon */
+    margin-right: 15px;
+}
+.winstart-search-contents {
+    background-color: transparent;
+    color: $text-primary;
+    font-size: 16px; /* Larger text */
+}
+.winstart-search-contents:focus { outline: none; }
+
+/* Section Headers */
+.winsearch-section-box { padding: 10px 10px 20px 10px; }
+.winstart-section {
+    font-weight: bold;
+    font-size: 18px; /* Bumped up */
+    color: $text-primary;
+}
+
+.winstart-button-allapps {
+    background-color: $surface;
+    border-radius: 10px;
+    padding: 8px 16px;
+    color: $text-secondary;
+    font-size: 14px; /* Bumped up */
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+.winstart-button-allapps:hover {
+    background-color: $surface-hover;
+    border: 1px solid $border-glass;
+    color: $text-primary;
+}
+
+/* App Grids & Lists */
+.winstart-pinnedapps { padding: 10px; }
+.winstart-pinnedapps-entry {
+    min-width: 110px; /* Larger click area */
+    min-height: 105px;
+    border-radius: 15px;
+    margin: 5px;
+    transition: 0.3s;
+}
+.winstart-pinnedapps-entry:hover { background-color: $surface-hover; }
+
+.winstart-allapps-box { padding: 10px 15px; }
+.winstart-allapps-app {
+    border-radius: 10px;
+    padding: 12px 16px; /* Roomier */
+    margin-bottom: 4px;
+    transition: 0.3s;
+}
+.winstart-allapps-app:hover { background-color: $surface-hover; }
+
+.winstart-pinnedapps-icon { border-radius: 12px; }
+.wintoggle-text {
+    font-size: 15px; /* Bumped up for readability */
+    color: $text-primary;
+}
+
+/* Bottom Bar User */
+.winstart-user {
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 8px 16px;
+    transition: 0.3s;
+}
+.winstart-user:hover { background-color: $surface-hover; }
+.winstart-user-icon {
+    min-width: 40px; /* Larger profile pic in bottom bar */
+    min-height: 40px;
+    border-radius: 50%;
+    background-color: $surface;
+}
+
+/* --- RIGHT PANEL: SYSTEM TRAY --- */
+.system-tray-content {
+    padding: 25px;
+    min-width: 340px; /* Wider to accommodate larger stats */
+}
+.system-tray-section {
+    background-color: rgba(15, 15, 25, 0.4);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid $border-glass;
+}
+.system-tray-section-title {
+    font-size: 16px; /* Bumped up */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: $text-primary;
+}
+.system-tray-separator { background-color: $border-glass; min-height: 1px; }
+
+/* Profile Block */
+.winstart-profile-box { min-width: 220px; }
+.winstart-profile-img {
+    min-width: 90px; /* Larger profile pic */
+    min-height: 90px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid $accent-color;
+}
+.winstart-profile-name {
+    font-size: 20px; /* Pro UI prominent name */
+    font-weight: bold;
+    color: $text-primary;
+}
+
+/* Fetch Information Block */
+.winstart-fetch-box { padding-top: 10px; }
+.fetch-icon {
+    color: $accent-color;
+    font-size: 20px; /* Larger icons */
+    min-width: 30px;
+}
+.fetch-text {
+    color: $text-secondary;
+    font-size: 15px; /* Larger text */
+}
+
+/* Circular Stats */
+.winstart-stat-box { min-width: 90px; min-height: 90px; }
+.winstart-stat-bg { color: rgba(255, 255, 255, 0.1); }
+.winstart-stat-progress { color: $accent-color; }
+.winstart-stat-label {
+    font-size: 24px; /* Larger internal icons */
+    font-weight: bold;
+}
+
+/* --- FOLDER WIDGETS --- */
+.winstart-folder-grid {
+    background-color: rgba(15, 15, 25, 0.5); /* Deep translucent inset */
+    border: 1px solid $border-glass;
+    border-radius: 15px;
+    min-width: 104px;   /* Scaled up for 2x2 */
+    min-height: 104px;  
+    padding: 8px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+}
+.winstart-folder-grid:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Fake blur hover effect */
+    border: 1px solid rgba(255,255,255, 0.3);
+}
+.winstart-folder-icon-button {
+    padding: 4px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.winstart-folder-icon-button:hover { background-color: $surface-hover; }
+.winstart-folder-label { font-size: 14px; color: $text-secondary; }
