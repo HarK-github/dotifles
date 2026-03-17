@@ -1,19 +1,9 @@
 * {
     all: unset;
         font-family: "Segoe UI Variable Display", "Segoe UI", "Segoe UI Custom", system-ui, -apple-system, sans-serif;
-;
 }
-* {
-    font-family: 'Cantarell', 'Ubuntu', sans-serif;
 
-}
-$bg-glass: rgba(30, 30, 46, 0.6);        /* Main translucent background */
-$bg-surface: rgba(24, 24, 37, 0.5);      /* Inner elements background */
-$bg-hover: rgba(255, 255, 255, 0.08);    /* Highlight on hover/active */
-$border-glass: rgba(255, 255, 255, 0.1); /* Subtle glass edge */
-$text-primary: #cdd6f4;
-$text-secondary: #a6adc8;
-$accent-color: #89b4fa;
+
 @import "scripts/colors/colors.scss";
 @import "scss/lib.scss";
 

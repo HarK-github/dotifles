@@ -24,12 +24,17 @@
 (deflisten kb_layout :initial "en"
 "scripts/get_kb_layout.sh")
 
- 
-(deflisten mpris :initial "{}"
-"scripts/mpris.sh")
+ (defvar end-notifications "[]")
+(defvar end-histories "")
+(defvar end-replies "")
+(defvar end-reply-text "")
 
-(deflisten mpris_positions :initial "{}"
-"scripts/positions.sh")
+;; Ensure your listeners have valid initial JSON structures
+(deflisten mpris :initial '{"name":"","title":"","artist":"","artUrl":"","status":"","length":"0","lengthStr":"0:00"}' 
+  "scripts/mpris.sh")
+
+(deflisten mpris_positions :initial "{}" 
+  "scripts/mpris_pos.sh")
 
 (deflisten volume :initial "0" `scripts/volume.sh`)
 

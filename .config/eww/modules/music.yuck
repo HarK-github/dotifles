@@ -1,52 +1,39 @@
 (defwidget music []
-  ;; Added a more robust check for mpris. If it's null or empty, reveal is false.
   (revealer :transition "slideup" 
-            :reveal {mpris != "null" && mpris != "{}" && mpris.name != ""} 
-            :duration {ANIM_DURATION}
+            ;; Use ?. and provide a fallback string to prevent the "json-value" error
+            :reveal { (mpris?.name ?: "") != "" } 
+            :duration "300ms"
     (box :orientation "v" :class "music" :space-evenly false
       (box :orientation "h" :space-evenly false
-        ;; FIX: Use a fallback for the background image to prevent "failed to open file null"
         (box :orientation "h" :space-evenly false :class "music-image" 
-             :style "background-image: url('${mpris.artUrl ?: "assets/default_music.png"}');")
+             :style "background-image: url('${mpris?.artUrl ?: ""}');")
         
         (box :orientation "v" :space-evenly false :class "music-text" :hexpand true
           (box :orientation "h" :space-evenly false :halign "end" :class "music-name"
-            (label :text {mpris.name ?: "None"})
-          )
+            (label :text {mpris?.name ?: "None"}))
           (box :orientation "v" :space-evenly false
-            (label :halign "start" :class "music-title" :limit-width 20 :text {mpris.title ?: "Offline"})
-            (label :halign "start" :class "music-artist" :limit-width 20 :text {mpris.artist ?: "Unknown Artist"})
-          )
-        )
-      )
+            (label :halign "start" :class "music-title" :limit-width 20 :text {mpris?.title ?: "Offline"})
+            (label :halign "start" :class "music-artist" :limit-width 20 :text {mpris?.artist ?: "Unknown"}))))
 
-      ;; FIX: The scale and label calculations now have default values to prevent type errors
       (box :orientation "v" :space-evenly false :class "music-scale-box" 
-           :visible {mpris.length != "" && mpris.length != "null"}
-        
+           :visible { (mpris?.length ?: "0") != "0" }
         (scale :min 0 
-               :max {mpris.length ?: 100} 
+        :value {mpris_positions[mpris.name]?.position ?: 0}
+
                :active true 
-               ;; Safe indexing: if mpris.name is empty, it uses 0
-               :value {mpris.name != "" ? (mpris_positions[mpris.name].position ?: 0) : 0} 
+               ;; Nested access needs extra care: check if player exists in positions map first
+               :value {mpris_positions[mpris?.name]?.position ?: 0} 
                :onchange "playerctl position {}" 
                :class "music-scale")
-        
         (box :orientation "h" :space-evenly false :hexpand true
           (label :hexpand true :class "music-strtime" 
-                 :text {mpris.name != "" ? (mpris_positions[mpris.name].positionStr ?: "0:00") : "0:00"} 
+                 :text {mpris_positions[mpris?.name]?.positionStr ?: "0:00"} 
                  :halign "start")
           (label :hexpand true :class "music-strtime" 
-                 :text {mpris.lengthStr ?: "0:00"} 
-                 :halign "end")
-        )
-      )
+                 :text {mpris?.lengthStr ?: "0:00"} 
+                 :halign "end")))
 
       (box :orientation "h" :space-evenly false :halign "center" :class "music-actions-box"
-        (button :class "music-action" :onclick "playerctl previous" "󰒮")
+                (button :class "music-action" :onclick "playerctl previous" "󰒮")
         (button :class "music-action" :onclick "playerctl play-pause" {mpris.status == "Playing" ? "󰓛" : "󰐊"})
-        (button :class "music-action" :onclick "playerctl next" "󰒭")
-      )
-    )
-  )
-)
+        (button :class "music-action" :onclick "playerctl next" "󰒭")))))

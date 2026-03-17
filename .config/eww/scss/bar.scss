@@ -1,85 +1,36 @@
+ 
+
 .bar-widget {
-    @include window;
-    padding: 0.2rem 1rem;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    margin-left: 0rem;
-    margin-right: 0rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: rgba(30, 30, 46, 0.6)  ; 
-    border-radius: 15px; 
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Optional: adds a 'glass' edge */
-
-}
-// Define your theme colors here
-$primary: #8aadf4;      // Bright accent color for the active dot
-$overlay0: #363a4f;     // Button hover background
-$overlayedge: #494d64;  // Button hover border
-
-.taskbaricon {
-  background-size: 60%;
- 
-  min-width: 42px;
-  min-height: 42px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  border-top: 1px solid transparent;
+    background-color: $glass-bg;  
+    padding: 2px 8px; // Very slim vertical padding
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.taskbaricon-false {
-  background-size: 70%;
- 
-  min-width: 42px;
-  min-height: 42px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  border-top: 1px solid transparent;
+.taskbar {
+    background-color: transparent;
 }
 
-.taskbaricon-true {
-  background-size: 70%;
- 
-  min-width: 42px;
-  min-height: 42px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  border-top: 1px solid transparent;
-}
+.app_item { 
+    margin: 0 1px;
+    padding: 4px; // Small padding for a 24px icon
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.2s ease;
 
-.taskbar-indicator-true {
-  border-radius: 6px;
-  border: 1px solid transparent;
-  border-top: 1px solid transparent;
-  margin-bottom: 4px;
-  margin-top: 43px;
-  margin-left: 16px;
-  margin-right: 16px;
-  background-color: $primary;
-}
-
-.taskbar-indicator-false {
-  border-radius: 6px;
-  border: 1px solid transparent;
-  border-top: 1px solid transparent;
-  margin-bottom: 4px;
-  margin-top: 43px;
-  margin-left: 22px;
-  margin-right: 22px;
-  background-color: #9C98A3;
-}
-
-.taskbar-button-only {
-  :first-child {
-    :first-child {
-      border-radius: 6px;
-      border: 1px solid transparent;
-      border-top: 1px solid transparent;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
     }
-  }
+
+    &.active {
+        background-color: $active-bg;
+        // Small dot indicator instead of a big bar for 24px size
+        background-image: radial-gradient(circle at center bottom, $accent 0%, transparent 20%);
+    }
 }
- 
-.taskbar-button-pad {
-  padding: 3px;
-  min-height: 42px;
+
+.app_icon {
+    /* Clamping to 24px */
+    min-width: 24px; 
+    min-height: 24px;
 }

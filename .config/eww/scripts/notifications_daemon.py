@@ -62,15 +62,22 @@ def close_notification():
     data["count"] = len(data["notifications"])
     save_and_update(data)
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        # If called without args, just output current JSON (good for debugging)
-        print(json.dumps(load_data()))
-        sys.exit(0)
+def main():
+    try:
+        DBusGMainLoop(set_as_default=True)
+        loop = GLib.MainLoop()
+        daemon = NotificationDaemon()
+        
+        # This will print to your terminal so you know it started
+        print("Daemon is now listening for notifications...", file=sys.stderr)
+        
+        # Initial print for Eww
+        print(json.dumps(daemon.read_log_file()), flush=True)
+        
+        loop.run()
+    except dbus.exceptions.DBusException as e:
+        print(f"Error: Could not start daemon. Is another notification server running? \n{e}", file=sys.stderr)
+        sys.exit(1)
 
-    cmd = sys.argv[1]
-    if cmd == "add": add_notification()
-    elif cmd == "close": close_notification()
-    elif cmd == "clear":
-        save_and_update({"count": 0, "notifications": [], "popups": []})
-        subprocess.run(["dunstctl", "history-clear"])
+if __name__ == "__main__":
+    main()

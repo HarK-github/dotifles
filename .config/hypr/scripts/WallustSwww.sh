@@ -109,8 +109,10 @@ wait_for_templates() {
 start_ts=$(date +%s)
 wallust run -s "$wallpaper_path" || true
 wallust_targets=(
-  "$HOME/.config/waybar/wallust/colors-waybar.css"
+"$HOME/.config/waybar/wallust/colors-waybar.css"
   "$HOME/.config/rofi/wallust/colors-rofi.rasi"
+  "$HOME/.cache/wallust/colors.scss"   # AGS usually reads from here
+  "$HOME/.cache/wallust/colors.css"    # Eww usually reads from here
 )
 wait_for_templates "$start_ts" "${wallust_targets[@]}" || true
 

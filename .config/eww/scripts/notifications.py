@@ -61,6 +61,15 @@ class NotificationDaemon(dbus.service.Object):
         if not self.dnd:
             self.save_popup(details)
         return id
+    @dbus.service.method("org.freedesktop.Notifications", out_signature="ssss")
+    def GetServerInformation(self):
+        # name, vendor, version, spec_version
+        return ("Eww Notification Daemon", "dharmx-modified", "1.0", "1.2")
+
+    @dbus.service.method("org.freedesktop.Notifications", out_signature="as")
+    def GetCapabilities(self):
+        # Tell the system we can handle body text, images, and actions
+        return ("body", "body-markup", "actions", "icon-static", "image-data")
 
     def write_log_file(self, data):
         output_json = json.dumps(data)
@@ -121,12 +130,21 @@ class NotificationDaemon(dbus.service.Object):
         return True
 
 def main():
-    DBusGMainLoop(set_as_default=True)
-    loop = GLib.MainLoop()
-    daemon = NotificationDaemon()
-    # Initial print for Eww startup
-    print(json.dumps(daemon.read_log_file()), flush=True)
-    loop.run()
+    try:
+        DBusGMainLoop(set_as_default=True)
+        loop = GLib.MainLoop()
+        daemon = NotificationDaemon()
+        
+        # This will print to your terminal so you know it started
+        print("Daemon is now listening for notifications...", file=sys.stderr)
+        
+        # Initial print for Eww
+        print(json.dumps(daemon.read_log_file()), flush=True)
+        
+        loop.run()
+    except dbus.exceptions.DBusException as e:
+        print(f"Error: Could not start daemon. Is another notification server running? \n{e}", file=sys.stderr)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

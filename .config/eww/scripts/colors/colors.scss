@@ -1,43 +1,76 @@
-// Windows 11 Blue & Dark Theme
-// Inspired by the official Windows 11 dark theme with accent blue
+// --- Deep Obsidian & Midnight Theme ---
+// Replaced standard Windows blues with Deep Obsidian Indigos
+$primary: #00A2FF;           // Vivid Obsidian Blue (for call-to-actions)
+$onPrimary: #ffffff;         
 
-$primary: #4cc2ff;           // Windows 11 accent blue - vibrant, modern
-$onPrimary: #0a0c0c;         // Near black for contrast on blue
+$primaryContainer: #1b1c31;   // Midnight Indigo container
+$onPrimaryContainer: #cdd1ff; 
 
-$primaryContainer: #1a3b4f;   // Darker blue for containers
-$onPrimaryContainer: #b8e6ff; // Light blue text on dark containers
+$secondary: #030303;          // Desaturated slate (Obsidian secondary)
+$onSecondary: #e0e0e0;        
 
-$secondary: #7f7f7f;          // Neutral gray for secondary elements
-$onSecondary: #f0f0f0;        // Light text on gray
+$secondaryContainer: #1e1e2e;  // Deep charcoal container
+$onSecondaryContainer: #c0c0c0; 
 
-$secondaryContainer: #3a3a3a;  // Dark gray container
-$onSecondaryContainer: #e0e0e0; // Light gray text
+// Tertiary: shifted from purple to a "Smoky Obsidian"
+$tertiary: #60728a;           
+$onTertiary: #f0f0f0;         
+$tertiaryContainer: #161b22;   
+$onTertiaryContainer: #a9b1d6; 
 
-$tertiary: #9c6b9c;           // Subtle purple accent for variety
-$onTertiary: #f0e6f0;         // Light text on purple
+$error: #ff5f5f;              
+$onError: #0a0c0c;            
+$errorContainer: #442121;      // Dark blood-red container
+$onErrorContainer: #ffb3b3;    
 
-$tertiaryContainer: #2d1f2d;   // Dark purple container
-$onTertiaryContainer: #e4cce4; // Light purple text
+// Core Obsidian Foundation
+$bg-dark: #0E0D17;            // Your requested Obsidian base
+$background: $bg-dark;          
+$onBackground: #f0f0f0;        
 
-$error: #ff5f5f;              // Softer red for errors
-$onError: #1a0c0c;            // Dark text on error
+// Surface: Darker and more integrated with the Obsidian base
+$surface: #161521;             
+$onSurface: #ffffff;           
 
-$errorContainer: #5a2e2e;      // Dark red container
-$onErrorContainer: #ffb3b3;    // Light red text
+// Glass and Surface logic
+$bg-glass: rgba(14, 13, 23, 0.65);        
+$bg-surface: rgba(22, 21, 33, 0.5);      
+$surfaceVariant: rgba(255, 255, 255, 0.03); 
+$onSurfaceVariant: #939ab7;    // Soft bluish-gray for secondary text
 
-$background: #1c1c1c;          // Windows 11 dark mode background (not pure black)
-$onBackground: #f0f0f0;        // Primary text on background
+$bg-hover: rgba(255, 255, 255, 0.06);    
+$border-glass: rgba(255, 255, 255, 0.05); 
 
-$surface: #252525;             // Slightly lighter than background for cards
-$onSurface: #f0f0f0;           // Text on surface
+$text-primary: #cdd6f4;
+$text-secondary: #7f849c;      // Desaturated for Obsidian feel
 
-$surfaceVariant: #323232;       // Mica-like surface variant
-$onSurfaceVariant: #c0c0c0;     // Secondary text
+$accent-color: #7aa2f7;
+$accent: #b5b0ff; 
 
-$outline: #505050;             // Subtle borders
-$shadow: #000000;              // Black shadows
+$outline: #2a2a3f;             // Dark indigo-tinted outline
+$shadow: #000000;
 
-$inverseSurface: #e0e0e0;       // Light surface for inverse
-$inverseOnSurface: #1c1c1c;     // Dark text on inverse
+// Glass and Surface logic
+$bg-glass: rgba(14, 13, 23, 0.5);        // Translucent Obsidian
+$bg-surface: rgba(24, 24, 37, 0.5);      
+$surfaceVariant: rgba(255, 255, 255, 0.05); 
+$onSurfaceVariant: #a5a5a5; 
 
-$inversePrimary: #4cc2ff;       // Same blue, used in inverse contexts
+$bg-hover: rgba(255, 255, 255, 0.08);    
+$border-glass: rgba(255, 255, 255, 0.1); 
+
+$text-primary: #000000;
+$text-secondary: #1e1f23;
+
+$accent-color: #89b4fa;
+$accent: #b5b0ff; 
+
+$outline: #505050;             
+$shadow: #000000;              
+
+$inverseSurface: #e0e0e0;       
+$inverseOnSurface: #1c1c1c;     
+$inversePrimary: #4cc2ff;
+$glass-bg: rgba(14, 13, 23, 0.9); 
+$active-bg: rgba(181, 176, 255, 0.2);
+$accent: #b5b0ff;

@@ -1,6 +1,16 @@
 .control-center {
-    @include window;
-    /* Use RGBA, not HEX, to let the blur show through */
-    background-color: rgba(30, 30, 46, 0.6) ;
+    /* Main container styling */
+    background-color: $glass-bg;  
+    border-radius: 16px; 
+    margin: 10px;
+    padding: 15px; 
 }
- 
+
+/* Individual component containers within the Control Center */
+.control-group {
+    background-color: transparent;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}

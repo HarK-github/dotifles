@@ -2,6 +2,7 @@
 	repositoryformatversion = 0
 	filemode = true
 	bare = true
+	excludesfile = .gitignore-dotfiles
 [status]
 	showUntrackedFiles = no
 [remote "origin"]
