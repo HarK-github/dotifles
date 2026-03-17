@@ -22,16 +22,18 @@ get_icon_path() {
 }
 
 # Send notification
+# Send notification
 send_notification() {
     local brightness=$1
     local icon_path=$2
+    # Use a unique ID (e.g., 2595) to force replacement
+    local msg_id="2595"
 
-    notify-send -e \
-        -h string:x-canonical-private-synchronous:brightness_notif \
+    notify-send -r "$msg_id" -e \
         -h int:value:"$brightness" \
         -u low \
         -i "$icon_path" \
-        "Screen" "Brightness: ${brightness}%"
+        "Brightness" "${brightness}%"
 }
 
 # Change brightness and notify

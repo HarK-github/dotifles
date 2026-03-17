@@ -6,7 +6,7 @@ UserScripts=$HOME/.config/hypr/UserScripts
 AGS_CONFIG="$HOME/.config/ags"
 
 # 1. Kill existing UI processes (Added 'ags')
-_ps=(rofi end-rs eww ags)
+_ps=(rofi  eww ags)
 for _prs in "${_ps[@]}"; do
     pkill "${_prs}"
 done
@@ -25,8 +25,7 @@ fi
 
 # 4. Relaunch Eww & SwayNC
 sleep 0.2
-eww daemon && eww open bar &
-end-rs >/dev/null 2>&1 &
+eww daemon && eww open bar & 
 
 # 5. Relaunch Rainbow Borders
 if [ -f "${UserScripts}/RainbowBorders.sh" ]; then

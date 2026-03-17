@@ -39,21 +39,16 @@ get_icon() {
 }
 
 # Notify
+# Notify for Volume
 notify_user() {
-    local muted="$(pamixer --get-mute)"
     local level="$(pamixer --get-volume)"
-
-    if [[ "$muted" == "true" || "$level" -eq 0 ]]; then
-        notify-send -e -h string:x-canonical-private-synchronous:volume_notif \
-            -h boolean:SWAYNC_BYPASS_DND:true -u low -i "$(get_icon)" \
-            " Volume:" " Muted"
-    else
-        notify-send -e -h int:value:"$level" -h string:x-canonical-private-synchronous:volume_notif \
-            -h boolean:SWAYNC_BYPASS_DND:true -u low -i "$(get_icon)" \
-            " Volume Level:" " ${level}%" &&
-            "$sDIR/Sounds.sh" --volume
-    fi
+    local icon="$(get_icon)"
+    # ID 2593 is a custom ID to ensure the notification replaces itself
+    notify-send -r 2593 -e -h int:value:"$level" -u low -i "$icon" " Volume Level:" " ${level}%"
+    "$sDIR/Sounds.sh" --volume
 }
+
+
 
 # Increase Volume
 inc_volume() {
@@ -118,22 +113,12 @@ get_mic_volume() {
 }
 
 # Notify for Microphone
+# Notify for Microphone
 notify_mic_user() {
-    local muted="$(pamixer --default-source --get-mute)"
     local level="$(pamixer --default-source --get-volume)"
-    local icon message
-
-    if [[ "$muted" == "true" || "$level" -eq 0 ]]; then
-        icon="$iDIR/microphone-mute.png"
-        notify-send -e -h "string:x-canonical-private-synchronous:volume_notif" \
-            -h boolean:SWAYNC_BYPASS_DND:true -u low -i "$icon" \
-            " Mic Level:" " Muted"
-    else
-        icon="$iDIR/microphone.png"
-        notify-send -e -h int:value:"$level" -h "string:x-canonical-private-synchronous:volume_notif" \
-            -h boolean:SWAYNC_BYPASS_DND:true -u low -i "$icon" \
-            " Mic Level:" " ${level}%"
-    fi
+    local icon="$(get_mic_icon)"
+    # ID 2594 for Mic to separate it from Volume
+    notify-send -r 2594 -e -h int:value:"$level" -u low -i "$icon" " Mic Level:" " ${level}%"
 }
 
 # Increase MIC Volume
