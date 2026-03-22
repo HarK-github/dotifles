@@ -1,21 +1,27 @@
 #!/bin/bash
 
-# Commands to interact with our Python Daemon via DBus
 case $1 in
-dismiss)
-	dbus-send --session --type=method_call --dest=org.freedesktop.Notifications \
-		/org/freedesktop/Notifications org.freedesktop.Notifications.DismissPopup uint32:"$2"
-	;;
-close)
-	dbus-send --session --type=method_call --dest=org.freedesktop.Notifications \
-		/org/freedesktop/Notifications org.freedesktop.Notifications.CloseNotification uint32:"$2"
-	;;
-clear)
-	dbus-send --session --type=method_call --dest=org.freedesktop.Notifications \
-		/org/freedesktop/Notifications org.freedesktop.Notifications.ClearAll
-	;;
-*)
-	# Return empty JSON for Eww
-	echo '{"count": 0, "notifications": [], "popups": []}'
-	;;
+    togglednd)
+        # Toggle the Eww variable
+        CURRENT_STATE=$(eww get do-not-disturb)
+        if [ "$CURRENT_STATE" == "false" ]; then
+            eww update do-not-disturb=true
+        else
+            eww update do-not-disturb=false
+        fi
+        ;;
+    close)
+        # Tell end-rs to close a specific notification
+        # $2 is the notification ID passed from the widget
+        end-rs close "$2"
+        ;;
+    clear)
+        # Tell end-rs to clear all notifications
+        end-rs clear
+        ;;
+    action)
+        # Trigger a notification action (button click)
+        # $2 is ID, $3 is Action Key
+        end-rs action "$2" "$3"
+        ;;
 esac

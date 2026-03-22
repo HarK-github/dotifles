@@ -15,7 +15,7 @@
 (include "modules/user.yuck")
 (include "modules/weather.yuck")
 (include "modules/picker.yuck")
-
+(include "modules/osettings.yuck")
 (include "modules/start_menu.yuck")
 
 (include "modules/logo.yuck")

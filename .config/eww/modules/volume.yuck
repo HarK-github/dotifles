@@ -7,11 +7,14 @@
            :class "volume-scale")
 
     (label :halign "start"
+           :style "font-family: 'Material Symbols Outlined'; font-size: 24px;"
            :text {volume == "muted" 
-                  ? "󰝟" 
-                  : (round(volume ?: 0, 0) < 33 
-                     ? "" 
-                     : (round(volume ?: 0, 0) < 67 ? "" : ""))})
+                  ? ""   ;; volume_off
+                  : (round(volume ?: 0, 0) < 2 
+                     ? "" ;; volume_mute
+                     : (round(volume ?: 0, 0) < 67 
+                        ? "" ;; volume_down
+                        : ""))}) ;; volume_up
   )
 )
 (defwidget volume_control_center []

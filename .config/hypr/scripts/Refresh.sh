@@ -17,14 +17,11 @@ done
 
 # 3. Relaunch AGS
 # Use -c to ensure it points to your config
-if command -v ags >/dev/null; then
-    ags & 
-else
-    echo "AGS not found, skipping..."
-fi
+
 
 # 4. Relaunch Eww & SwayNC
 sleep 0.2
+ags -q && ags &
 eww daemon && eww open bar & 
 
 # 5. Relaunch Rainbow Borders

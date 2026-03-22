@@ -12,19 +12,3 @@
     )
   )
 )
-(defwidget calendar_button []
-  (button :class {show_calendar ? "bar-calendar-btn active" : "bar-calendar-btn"}
-          :onclick "scripts/toggle_calendar.sh"
-    (box :orientation "h" :space-evenly false :spacing 10
-      ;; The "Icon" Part
-      (box :class "cal-icon-stack" :orientation "v" :space-evenly false
-        (label :class "cal-month-label" :text {calendar_month})
-        (label :class "cal-day-label" :text {calendar_day}))
-      
-      ;; The "Time" Part
-      (box :orientation "v" :space-evenly false :valign "center"
-        (label :class "bar-time" :text {formattime(EWW_TIME, "%H:%M")})
-        (label :class "bar-day-name" :text {formattime(EWW_TIME, "%A")}))
-    )
-  )
-)

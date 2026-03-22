@@ -15,6 +15,8 @@ elif [[ "$1" == "toggle" ]]; then
     if pgrep -x "$PROCESS" >/dev/null; then
         pkill "$PROCESS"
     else
+        pkill end-rs
+        /home/harshit-kandpal/.cargo/bin/end-rs daemon &
         "$PROCESS" >/dev/null 2>&1 &
         disown
     fi

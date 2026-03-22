@@ -1,23 +1,10 @@
-/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-/* KooL Hyprland Rofi Style 11 - Windows 11 List Dark */
-/* source: https://github.com/newmanls */
-
-/* Integrating Wallust and More tweaks */
-
-/* ---- Configuration ---- */
-configuration {
-    show-icons:      true;
-    hover-select:    true;
-    me-select-entry: "MouseSecondary";
-    me-accept-entry: "MousePrimary";
-}
-
-/*****----- Global Properties -----*****/
 * {
-  bg0    : black/50%;
-  bg1    : black/40%;
-  bg2    : black/10%;
-  bg3    : black;
+  font: "Roboto 10";
+
+  bg0    : #1f1f1f80;
+  bg1    : #202020bf;
+  bg2    : #2c2c2c;
+  bg3    : #393939bf;
   fg0    : #ffffff;
   fg1    : #cecece;
   accent : #60cdff;
@@ -29,8 +16,8 @@ configuration {
   margin  : 0;
   padding : 0;
   spacing : 0;
+  
 }
-
 
 element-icon, element-text, scrollbar {
   cursor: pointer;
@@ -38,9 +25,9 @@ element-icon, element-text, scrollbar {
 
 window {
   location : south;
-  width    : 40%;
-  height   : 50%;
-  y-offset : -10px;
+  width    : 600px;
+  height   : 600px;
+  y-offset : -4px;
 
   background-color : @bg1;
   border-radius    : 8px;
@@ -72,9 +59,14 @@ icon-search {
 }
 
 entry {
-  placeholder       : "Search  👀 NOTE: CTRL TAB to change MODE";
-  text-color		: @fg1;
-  horizontal-align  : 0.5;
+  font              : "Roboto 12";
+  placeholder       : "Type here to search";
+  placeholder-color : @fg1;
+}
+
+textbox {
+  padding          : 4px 8px;
+  background-color : @bg2;
 }
 
 listview {
@@ -86,7 +78,7 @@ listview {
 
 element {
   spacing       : 1em;
-  padding       : 20px;
+  padding       : 8px;
   border-radius : 2px;
 }
 
@@ -106,11 +98,8 @@ element selected active {
   text-color: @accent;
 }
 
-element-text selected,
 element selected {
   background-color: @bg3;
-  padding: 20px;
-  border-radius: 12px;
 }
 
 element selected urgent {
@@ -123,27 +112,4 @@ element-icon {
 
 element-text {
   text-color: inherit;
-}
-
-/* ---- Scrollbar ---- */
-scrollbar {
-  border:			0px;
-  border-radius:	10px;
-  background-color:	inherit;
-  handle-color: 	@accent;
-  handle-width: 	2px ;
-  padding:      	0;
-}
-
-/*****----- Message -----*****/
-error-message {
-  padding: 20px;
-}
-
-textbox {
-  padding			: 10px;
-  background-color	: @bg0;
-  text-color		: @fg0;
-  vertical-align	: 0.5;
-  horizontal-align	: 0.5;
 }

@@ -20,10 +20,9 @@ vim.o.tabstop = 4 -- Number of spaces for a tab
 vim.o.shiftwidth = 4 -- Number of spaces to use for autoindent
 vim.o.expandtab = false -- Use real tabs instead of spaces
 --Lua:
--- Fix right-click context menu in insert mode
-vim.keymap.set("v", "<RightMouse>", "<C-\\><C-g>gv<cmd>popup! PopUp<cr>", { noremap = true })
+-- Fix right-click context menu in insertuse>", "<C-\\><C-g>gv<cmd>popup! PopUp<cr>", { noremap = true })
 -- Other configurations...
-
+vim.opt.mouse = "a"
 -- Right-click fix
 vim.keymap.set("v", "<RightMouse>", "<C-\\><C-g>gv<cmd>popup! PopUp<cr>", { noremap = true })
 -- Define a simple context menu (optional)

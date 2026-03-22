@@ -33,7 +33,7 @@ $surface: #161521;
 $onSurface: #ffffff;           
 
 // Glass and Surface logic
-$bg-glass: rgba(14, 13, 23, 0.65);        
+$bg-glass: rgba(14, 13, 23, 0.75);        
 $bg-surface: rgba(22, 21, 33, 0.5);      
 $surfaceVariant: rgba(255, 255, 255, 0.03); 
 $onSurfaceVariant: #939ab7;    // Soft bluish-gray for secondary text
@@ -51,8 +51,8 @@ $outline: #2a2a3f;             // Dark indigo-tinted outline
 $shadow: #000000;
 
 // Glass and Surface logic
-$bg-glass: rgba(14, 13, 23, 0.5);        // Translucent Obsidian
-$bg-surface: rgba(24, 24, 37, 0.5);      
+$bg-glass: rgba(14, 13, 23, 0.9);        // Translucent Obsidian
+$bg-surface: rgba(24, 24, 37, 0.9);      
 $surfaceVariant: rgba(255, 255, 255, 0.05); 
 $onSurfaceVariant: #a5a5a5; 
 
@@ -71,6 +71,6 @@ $shadow: #000000;
 $inverseSurface: #e0e0e0;       
 $inverseOnSurface: #1c1c1c;     
 $inversePrimary: #4cc2ff;
-$glass-bg: rgba(14, 13, 23, 0.6); 
+$glass-bg: rgba(14, 13, 23, 0.8); 
 $active-bg: rgba(181, 176, 255, 0.2);
 $accent: #b5b0ff;

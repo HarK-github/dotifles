@@ -15,6 +15,7 @@
 
 (defpoll recording :interval "1s"
 "pgrep 'wf-recorder' || echo false")
+ 
 
 ; LISTENS
 (defvar current_theme "dark")
@@ -30,8 +31,7 @@
 (defvar end-reply-text "")
 
 ;; Ensure your listeners have valid initial JSON structures
-(deflisten mpris :initial '{"name":"","title":"","artist":"","artUrl":"","status":"","length":"0","lengthStr":"0:00"}' 
-  "scripts/mpris.sh")
+(deflisten mpris :initial "{}" "~/.config/eww/scripts/mpris.sh")
 
 (deflisten mpris_positions :initial "{}" 
   "scripts/mpris_pos.sh")

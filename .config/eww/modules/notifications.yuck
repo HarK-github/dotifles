@@ -1,18 +1,19 @@
 ;; Initialize as empty strings because they will receive literal Yuck code
- 
-
+  
 ;; 1. The Window
 (defwindow notification-frame
   :monitor 0
-  :geometry (geometry :x "20px"
-                      :y "20px"
-                      :anchor "top center"
-                      :width "400px")
+  :geometry (geometry :x "20px" :y "20px" :anchor "top center" :width "400px")
   :stacking "fg"
   :windowtype "dock"
   :wm-ignore true
-  ;; end-rs builds the container and feeds the literal code here
-  (literal :content end-notifications))
+  
+  ;; Use a conditional check INSIDE the window content
+  (box :class "main-container"
+    (literal :content {(!do-not-disturb && end-notifications != "" && end-notifications != "(box)") 
+                       ? end-notifications 
+                       : "(box :visible false)"}))
+)
 
 ;; 2. The Widget Template
 ;; Note: end-rs specifically passes data into an argument named `notification`
@@ -40,7 +41,7 @@
                   :halign "end" 
                   :class "notification-close" 
                   ;; Use full path if end-rs is in your config folder
-                  :onclick "end-rs close ${notification.id} &" 
+                  :onclick "/home/harshit-kandpal/.cargo/bin/end-rs close ${notification.id} &" 
                   "󰅖")
         )
         
@@ -66,7 +67,9 @@
         (button :class "notification-action"
                 ;; Wrap IDs in single quotes inside the double quotes 
                 ;; to prevent shell expansion issues
-                :onclick "end-rs action ${notification.id} '${action.id}' && end-rs close ${notification.id} &"
+                :onclick "/home/harshit-kandpal/.cargo/bin/end-rs action ${notification.id} ${action.id} &"
+
+
                 {action.text}))
     )
   )

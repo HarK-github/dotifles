@@ -11,6 +11,21 @@
          (box :orientation "h" :space-evenly true
             (bluetooth_qs)
         )
+         (box :orientation "h" :space-evenly true
+            (easyeffects_qs)
+        )
+
+    )
+)
+(defvar ee_enabled false)
+
+(defwidget easyeffects_qs []
+    (quick_settings_button  :condition {ee_enabled == false} 
+                            :action "scripts/easyeffects.sh toggle"
+                            :icon "󰓃"
+                            :label "EasyEffects"
+                            :class "ee-plite"
+                            
     )
 )
 
