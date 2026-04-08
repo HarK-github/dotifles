@@ -1,0 +1,353 @@
+;; ========== Time Variables ==========
+(defpoll time12 :interval "10s" `date '+%l:%M %^P' | sed 's/am/AM/g' | sed 's/pm/PM/g'`)
+
+;; ========== System Info Variables (used in settings panel) ==========
+(defvar username_default "Harshit")
+(defpoll uptime :interval "1m" "uptime -p | sed -e 's/up //;s/ hours,/h/;s/ minutes/m/'")
+(defpoll packages :interval "5m" `pacman -Q | wc -l`)
+(defpoll kernel :interval "5m" `uname -r`)  
+(defpoll wm :interval "5m" :initial "Hyprland" `echo $XDG_CURRENT_DESKTOP`)
+
+;; ========== Hyprland Settings Listener ==========
+(deflisten hyprjson "scripts/hyprsettings")
+
+;; ========== Animation Variables ==========
+(defvar anim_open_ostg true)
+(defvar rev_ostg false)
+
+;; ========== Search Variable ==========
+(defvar oquery "")
+
+;; ========== Screen Resolution ==========
+(defvar RES_WIDTH 1920)
+(defvar RES_HEIGHT 1080)
+(defvar EWW_CMD "eww")
+
+;; ========== Other Required Variables ==========
+(defvar compact false)  ; Used in osettings widget
+;; Checkbox widget (same as winnews)
+(defwidget checkboxhyprctl-win [value changevalue]
+  (eventbox
+    :cursor "pointer"
+    :onclick "hyprctl keyword ${changevalue} ${1 - value} && scripts/hyprsettings tickle"
+    (box
+      :class "win-checkbox-${value}"
+      :halign "end"
+    )
+  )
+)
+
+;; Main settings widget (styled like winnews)
+(defwidget osettings []
+  (box
+    :orientation "v" :space-evenly false
+    :width {RES_WIDTH / 2}
+    :height {RES_HEIGHT - 51} 
+    (eventbox
+      :onclick "scripts/toggle-osettings.sh --close &"
+      :onmiddleclick "scripts/toggle-osettings.sh --close &"
+      :onrightclick "scripts/toggle-osettings.sh --close &"
+      (box :class "box-that-is-there" :style "min-height: 0px;")
+    )
+    
+    (box :space-evenly false :orientation "v"
+      :width {RES_WIDTH / 2 - 24}
+      :height {RES_HEIGHT - 51}
+      :class "winwin"
+      ;; Top bar
+      (centerbox
+        :class "winnews-topbar"
+        :height 35
+        (box :space-evenly false :height 35
+          (label :class "winnews-clock" :text "Widgets")
+        )
+        (box :space-evenly false :height 35
+          (overlay
+            (box :space-evenly false
+              :class "winnews-search-prompt"
+              :height 33 :width 500
+              (box
+                :halign "start"
+                :class "winsearch-icon winstart-search-searchbox-icon"
+                :style "margin-left: 5px;"
+              )
+              (revealer
+                :reveal {oquery == ''}
+                :halign "start"
+                :duration "100ms"
+                (label :class "winnews-search-prompt-text" :xalign 0 :text "Search Settings")
+              )
+            )
+            (input
+              :class "winnews-search-contents"
+              :onchange "${EWW_CMD} update oquery='{}' &"
+            )
+          )
+        )
+        (box :space-evenly false :height 35
+          :halign "end"
+          (label :class "winnews-clock" :text {time12})
+          (button
+            :halign "end"
+            :class "winnews-user"
+            :onclick "scripts/toggle-osettings.sh --close && gnome-control-center user-accounts &"
+            (box :height 35 :width 35 :class "winstart-user-icon")
+          )
+        )
+      )
+      ;; Scrollable content
+      (scroll
+        :height 930
+        (box :orientation "h" :spacing 12 :class "winnews-widgets"
+          ;; Single column (you can add a second column later if needed)
+          (box :orientation "v" :spacing 12 :space-evenly false
+            ;; Calendar section (always visible)
+            (box :orientation "v" :space-evenly false :class "winnews-widget"
+              (box :orientation "h" :space-evenly false
+                (label :halign "start" :class "winnews-section-icon" :text "")
+                (label :halign "start" :wrap true :class "winnews-section" :text "Calendar")
+              )
+              (box :orientation "v" :space-evenly false :class "winnews-fetch-pad"
+                (calendar :class "cal-content"
+                  :show-heading true
+                  :show-day-names true
+                  :onclick "notify-send 'Calendar' 'Selected: {0}/{1}/{2}'")
+              )
+            )
+            ;; Mouse & Touchpad
+            (revealer
+              :reveal "${matches('mouse and touchpad touch pad mouse speed mouse acceleration raw input sensitivity disable while typing disable_while_typing tap to click clickfinger_behavior',oquery)}"
+              :transition "slidedown"
+              :duration "200ms"
+              (box :orientation "v" :space-evenly false :class "winnews-widget"
+                (box :orientation "h" :space-evenly false
+                  (label :halign "start" :class "winnews-section-icon" :text "")
+                  (label :halign "start" :wrap true :class "winnews-section" :text "Mouse & Touchpad")
+                )
+                (revealer
+                  :reveal "${matches('mouse and touchpad touch pad speed mouse acceleration raw input sensitivity',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (box :space-evenly false :orientation "v"
+                    (centerbox :orientation "h" :halign "fill" :class "winnews-option"
+                      (label :halign "start" :class "winnews-text" :text "Raw input")
+                      (box)
+                      (checkboxhyprctl-win
+                        :value "${hyprjson.force_no_accel}"
+                        :changevalue "input:force_no_accel"
+                        :halign "end"
+                      )
+                    )
+                    (eventbox :onrightclick "hyprctl keyword input:sensitivity 0"
+                      (box :space-evenly false :orientation "v" :class "winnews-option"
+                        (label :halign "start" :wrap true :class "winnews-text" :text "Sensitivity")
+                        (scale
+                          :class "winslider-winnews"
+                          :value "${hyprjson.input_sensitivity * 50 + 50}"
+                          :onchange "hyprctl keyword input:sensitivity $(echo - | awk '{print {} / 50 - 1}') && scripts/hyprsettings tickle"
+                        )
+                      )
+                    )
+                  )
+                )
+                (revealer
+                  :reveal "${matches('mouse and touch pad touchpad disable while typing disable_while_typing',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (centerbox :orientation "h" :halign "fill" :class "winnews-option"
+                    (label :halign "start" :class "winnews-text" :text "Disable touchpad while typing")
+                    (box)
+                    (checkboxhyprctl-win
+                      :value "${hyprjson.touchpad_disable_while_typing}"
+                      :changevalue "input:touchpad:disable_while_typing"
+                    )
+                  )
+                )
+                (revealer
+                  :reveal "${matches('mouse and touchpad touch pad tap to click clickfinger_behavior',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (centerbox :orientation "h" :halign "fill" :class "winnews-option"
+                    (label :halign "start" :class "winnews-text" :text "Tap to click")
+                    (box)
+                    (checkboxhyprctl-win
+                      :value "${hyprjson.touchpad_clickfinger_behavior}"
+                      :changevalue "input:touchpad:clickfinger_behavior"
+                    )
+                  )
+                )
+              )
+            )
+            ;; Blur
+            (revealer
+              :reveal "${matches('appearance looks customization blur size blur passes blur strength blur xray',oquery)}"
+              :transition "slidedown"
+              :duration "200ms"
+              (box :orientation "v" :space-evenly false :class "winnews-widget"
+                (box :orientation "h" :space-evenly false
+                  (label :halign "start" :class "winnews-section-icon" :text "")
+                  (label :halign "start" :wrap true :class "winnews-section" :text "Blur")
+                )
+(button 
+  :class "winnews-option"
+  :onclick "hyprctl keyword decoration:active_opacity ${hyprjson.active_opacity == 1 ? '0.9' : '1.0'} && hyprctl keyword decoration:inactive_opacity ${hyprjson.inactive_opacity == 1 ? '0.8' : '1.0'} && scripts/hyprsettings tickle"
+  (centerbox :orientation "h" :halign "fill"
+    (label :halign "start" :class "winnews-text" :text "Opaque Mode")
+    (box)
+    ;; This box acts as the visual "indicator" or LED
+    (box 
+      :halign "end" 
+      :class "win-checkbox-${hyprjson.active_opacity == 1 ? '1' : '0'}"
+      :width 20 :height 20
+    )
+  )
+)
+
+                (revealer
+                  :reveal "${matches('appearance looks customization blur size blur strength',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (box :space-evenly false :orientation "v" :class "winnews-option"
+                    (label :halign "start" :wrap true :class "winnews-text" :text "Blur size")
+                    (scale
+                      :class "winslider-winnews"
+                      :value "${hyprjson.blur_size}"
+                      :tooltip "Blur size: ${hyprjson.blur_size}"
+                      :onchange "hyprctl keyword decoration:blur:size {} && scripts/hyprsettings tickle"
+                    )
+                  )
+                )
+                
+                (revealer
+                  :reveal "${matches('appearance looks customization blur passes blur strength',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (box :space-evenly false :orientation "v" :class "winnews-option"
+                    (label :halign "start" :wrap true :class "winnews-text" :text "Blur passes")
+                    (scale
+                      :class "winslider-winnews"
+                      :value "${hyprjson.blur_passes * 10}"
+                      :tooltip "Blur passes: ${hyprjson.blur_passes}"
+                      :onchange "hyprctl keyword decoration:blur:passes $(({} / 10)) && scripts/hyprsettings tickle"
+                    )
+                  )
+                )
+                (revealer
+                  :reveal "${matches('appearance looks customization blur xray',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (centerbox :orientation "h" :halign "fill" :class "winnews-option"
+                    (label :halign "start" :class "winnews-text" :text "Blur xray")
+                    (box)
+                    (checkboxhyprctl-win
+                      :value "${hyprjson.blur_xray}"
+                      :changevalue "decoration:blur:xray"
+                    )
+                  )
+                )
+              )
+            )
+            ;; Gaps & Borders
+            (revealer
+              :reveal "${matches('appearance looks customization gaps gaps_in inner gaps: inner gaps_out outer gaps: outer space border_size border size border thickness rounding corner',oquery)}"
+              :transition "slidedown"
+              :duration "200ms"
+              (box :orientation "v" :space-evenly false :class "winnews-widget"
+                (box :orientation "h" :space-evenly false :spacing 10
+                  (label :halign "start" :class "winnews-section-icon" :text "")
+                  (label :halign "start" :wrap true :class "winnews-section" :text "Gaps/Borders")
+                )
+                (revealer
+                  :reveal "${matches('appearance looks customization gaps_in inner gaps: inner space',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (box :space-evenly false :orientation "v" :class "winnews-option"
+                    (label :halign "start" :wrap true :class "winnews-text" :text "Gaps: Inner")
+                    (scale
+                      :class "winslider-winnews"
+                      :value "${hyprjson.gaps_in}"
+                      :tooltip "Inner gaps: ${hyprjson.gaps_in}"
+                      :onchange "hyprctl keyword general:gaps_in {} && scripts/hyprsettings tickle"
+                    )
+                  )
+                )
+                (revealer
+                  :reveal "${matches('appearance looks customization gaps_out outer gaps: outer space',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (box :space-evenly false :orientation "v" :class "winnews-option"
+                    (label :halign "start" :wrap true :class "winnews-text" :text "Gaps: Outer")
+                    (scale
+                      :class "winslider-winnews"
+                      :value "${hyprjson.gaps_out}"
+                      :tooltip "Outer gaps: ${hyprjson.gaps_out}"
+                      :onchange "hyprctl keyword general:gaps_out {} && scripts/hyprsettings tickle"
+                    )
+                  )
+                )
+                (revealer
+                  :reveal "${matches('appearance looks customization border_size border size border thickness',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (box :space-evenly false :orientation "v" :class "winnews-option"
+                    (label :halign "start" :wrap true :class "winnews-text" :text "Border size")
+                    (scale
+                      :class "winslider-winnews"
+                      :value "${hyprjson.border_size}"
+                      :tooltip "Border size: ${hyprjson.border_size}"
+                      :onchange "hyprctl keyword general:border_size {} && scripts/hyprsettings tickle"
+                    )
+                  )
+                )
+                (revealer
+                  :reveal "${matches('appearance looks customization rounding corner',oquery)}"
+                  :transition "slidedown"
+                  :duration "200ms"
+                  (box :space-evenly false :orientation "v" :class "winnews-option"
+                    (label :halign "start" :wrap true :class "winnews-text" :text "Rounding")
+                    (scale
+                      :class "winslider-winnews"
+                      :value "${hyprjson.rounding}"
+                      :tooltip "Rounding: ${hyprjson.rounding}"
+                      :onchange "hyprctl keyword decoration:rounding {} && scripts/hyprsettings tickle"
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+;; Window definition (matches winnews geometry)
+(defwindow osettings
+  :wm-ignore true
+  :focusable "ondemand"
+  :monitor 0
+  :geometry (geometry
+    :width "50%"
+    :anchor "bottom center"
+  )
+  (osettings)
+)
+
+;; Toggle button (keep your bar style)
+(defwidget osettings-button []
+  (eventbox
+    :class "osettings-toggle-button-${rev_ostg}"
+    
+    :onclick "scripts/toggle-osettings.sh &"
+    :onscroll "echo $(echo {} | sed -e 's/down/-/g' -e 's/up/+/g' | xargs -I% wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.03%) && scripts/volume osd"
+    (box
+      :class "module-button-pad-left"
+      (image
+        :path "images/svg/settings.svg"
+        :image-height 33
+        :image-width 33
+      )
+    )
+  )
+)

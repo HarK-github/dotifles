@@ -1,0 +1,6 @@
+(defwidget logo []
+    (button :class "logo" 
+            :onclick "~/.config/eww/scripts/toggle_start_menu.sh &"  ;; Changed to start menu
+        (label :text "󰣇")
+    )
+)

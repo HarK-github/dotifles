@@ -1,0 +1,568 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Windows 11 Style Theme - Complete Configuration */
+
+{
+  "layer": "top",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "bottom",
+  "spacing": 3,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-top": 3,
+  "margin-left": 8,
+  "margin-right": 8,
+
+  /* ----- MODULE POSITIONS ----- */
+  "modules-left": [
+    "custom/separator#blank",
+    "custom/cava_mviz",
+    "custom/separator#blank",
+    "custom/playerctl",
+    "hyprland/window",
+    "hyprland/workspaces#rw"
+  ],
+
+  "modules-center": [
+    "custom/separator#blank",
+    "wlr/taskbar"
+  ],
+
+  "modules-right": [
+    "tray",
+    "group/laptop", 
+    "group/audio",
+    "custom/nightlight", 
+    "clock", 
+    "idle_inhibitor",
+    "custom/hint"
+  ],
+
+  /* ----- GROUP DEFINITIONS ----- */
+  "group/app_drawer": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/menu",
+      "custom/light_dark",
+      "custom/file_manager",
+      "custom/tty",
+      "custom/browser",
+      "custom/settings"
+    ]
+  },
+
+  "group/motherboard": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      "power-profiles-daemon",
+      "memory",
+      "temperature",
+      "disk"
+    ]
+  },
+
+   
+
+  "group/laptop": {
+    "orientation": "horizontal",
+    "modules": [
+      "backlight",
+      "battery"
+    ]
+  },
+
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio#microphone"
+    ]
+  },
+
+  "group/connections": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "bluetooth"
+    ]
+  },
+
+  "group/status": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/power",
+      "custom/lock",
+      "keyboard-state",
+      "custom/keyboard"
+    ]
+  },
+
+  "group/notify": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/swaync",
+      "custom/dot_update"
+    ]
+  },
+
+  "group/power": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/power",
+      "custom/quit",
+      "custom/lock",
+      "custom/reboot"
+    ]
+  },
+
+  "group/power#vert": {
+    "orientation": "vertical",
+    "modules": [
+      "custom/power",
+      "custom/lock",
+      "custom/logout",
+      "custom/reboot"
+    ]
+  },
+
+  /* ----- TASKBAR MODULE ----- */
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 30,
+    "icon-theme": "Papirus-Dark",
+    "all-outputs": true,
+    "on-click": "activate",
+    "on-click-right": "close",
+    "tooltip": true,
+    "tooltip-format": "{title}"
+  },
+
+  /* ----- CUSTOM MODULES ----- */
+  "custom/weather": {
+    "format": "{}",
+    "format-alt": "{alt}: {}",
+    "format-alt-click": "click",
+    "interval": 3600,
+    "return-type": "json",
+    "exec": "$HOME/.config/hypr/UserScripts/WeatherWrap.sh",
+    "tooltip": true
+  },
+
+  "custom/hyprpicker": {
+    "format": "",
+    "on-click": "hyprpicker | wl-copy",
+    "tooltip": true,
+    "tooltip-format": "Hyprpicker"
+  },
+
+  "custom/file_manager": {
+    "format": "󰝰",
+    "on-click": "$HOME/.config/hypr/scripts/WaybarScripts.sh --files",
+    "tooltip": true,
+    "tooltip-format": "File Manager"
+  },
+
+  "custom/tty": {
+    "format": "",
+    "on-click": "$HOME/.config/hypr/scripts/WaybarScripts.sh --term",
+    "tooltip": true,
+    "tooltip-format": "Launch Terminal"
+  },
+
+  "custom/browser": {
+    "format": "󰈹",
+    "on-click": "xdg-open https://",
+    "tooltip": true,
+    "tooltip-format": "Launch Browser"
+  },
+
+  "custom/settings": {
+    "format": "",
+    "on-click": "$HOME/.config/hypr/scripts/Kool_Quick_Settings.sh",
+    "tooltip": true,
+    "tooltip-format": "Launch KooL Hyprland Settings Menu"
+  },
+
+  "custom/cycle_wall": {
+    "format": "󰸉",
+    "on-click": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
+    "on-click-right": "$HOME/.config/hypr/UserScripts/WallpaperRandom.sh",
+    "on-click-middle": "$HOME/.config/hypr/scripts/WaybarStyles.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Wallpaper Menu\nMiddle Click: Random wallpaper\nRight Click: Waybar Styles Menu"
+  },
+
+  "custom/hint": {
+    "format": "󰘥",
+    "on-click": "$HOME/.config/hypr/scripts/KeyHints.sh",
+    "on-click-right": "$HOME/.config/hypr/scripts/KeyBinds.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Quick Tips\nRight Click: Keybinds"
+  },
+
+  "custom/dot_update": {
+    "format": "󰁈",
+    "on-click": "$HOME/.config/hypr/scripts/KooLsDotsUpdate.sh",
+    "tooltip": true,
+    "tooltip-format": "Check KooL Dots update\nIf available"
+  },
+
+  "custom/hypridle": {
+    "format": "󱫗",
+    "return-type": "json",
+    "escape": true,
+    "exec-on-event": true,
+    "interval": 60,
+    "exec": "$HOME/.config/hypr/scripts/Hypridle.sh status",
+    "on-click": "$HOME/.config/hypr/scripts/Hypridle.sh toggle",
+    "on-click-right": "hyprlock"
+  },
+
+  "custom/keyboard": {
+    "exec": "$HOME/.config/hypr/scripts/KeyboardLayout.sh status",
+    "interval": 1,
+    "format": "󰌌 {}",
+    "on-click": "$HOME/.config/hypr/scripts/KeyboardLayout.sh switch"
+  },
+
+  "custom/light_dark": {
+    "format": "󱪺",
+    "on-click": "$HOME/.config/hypr/scripts/DarkLight.sh",
+    "on-click-right": "$HOME/.config/hypr/scripts/WaybarStyles.sh",
+    "on-click-middle": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Switch Dark-Light Themes\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Styles Menu"
+  },
+
+  "custom/nightlight": {
+    "return-type": "json",
+    "exec": "$HOME/.config/hypr/scripts/Hyprsunset.sh status",
+    "interval": 3,
+    "format": "{text}",
+    "min-length": 2,
+    "on-click": "$HOME/.config/hypr/scripts/Hyprsunset.sh toggle",
+    "tooltip": true,
+    "tooltip-format": "Night light toggle",
+    "escape": false
+  },
+
+  "custom/lock": {
+    "format": "󰌾",
+    "on-click": "$HOME/.config/hypr/scripts/LockScreen.sh",
+    "tooltip": true,
+    "tooltip-format": "󰷛 Screen Lock"
+  },
+
+  "custom/menu": {
+    "format": "󰣇",
+    "on-click": "pkill rofi || rofi -show drun -modi run,drun,filebrowser,window",
+    "on-click-middle": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
+    "on-click-right": "$HOME/.config/hypr/scripts/WaybarLayout.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Rofi Menu\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Layout Menu"
+  },
+
+  "custom/cava_mviz": {
+    "exec": "$HOME/.config/hypr/scripts/WaybarCava.sh",
+    "format": "{}",
+    "interval": 1,
+    "tooltip": false
+  },
+
+  "custom/playerctl": {
+    "format": "{}",
+    "return-type": "json",
+    "max-length": 25,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}}  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "scroll-step": 5.0,
+    "on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
+    "on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+    "on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur"
+  },
+
+  "custom/reboot": {
+    "format": "󰜉",
+    "on-click": "systemctl reboot",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Reboot"
+  },
+
+  "custom/quit": {
+    "format": "󰗼",
+    "on-click": "hyprctl dispatch exit",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Exit Hyprland"
+  },
+
+  "custom/logout": {
+    "format": "󰍃",
+    "on-click": "hyprctl dispatch exit",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Logout"
+  },
+
+  "custom/swaync": {
+    "tooltip": true,
+    "tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󰂚",
+      "none": "󰂚",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂚",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "custom/updater": {
+    "format": "󰏗 {}",
+    "exec": "checkupdates | wc -l",
+    "exec-if": "[[ $(checkupdates | wc -l) ]]",
+    "interval": 43200,
+    "on-click": "$HOME/.config/hypr/scripts/Distro_update.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Update System"
+  },
+
+  /* ----- SEPARATORS ----- */
+  "custom/separator#dot": {
+    "format": "•",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/separator#dot-line": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/separator#line": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/separator#blank": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/separator#blank_2": {
+    "format": "  ",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/separator#blank_3": {
+    "format": "   ",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  /* ----- WORKSPACES MODULE (with window rewrite) ----- */
+  "hyprland/workspaces#rw": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "sort-by-number": true,
+    "show-special": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "format": "{icon} {windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": "󰣆",
+    "window-rewrite": {
+      "title<.*amazon.*>": "",
+      "title<.*reddit.*>": "",
+      "class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser|[Cc]achy-browser>": "󰈹",
+      "class<zen>": "󰰷",
+      "class<waterfox|waterfox-bin>": "󰈹",
+      "class<microsoft-edge>": "󰇩",
+      "class<Chromium|Thorium|[Cc]hrome>": "󰊯",
+      "class<brave-browser>": "󰶐",
+      "class<tor browser>": "󰴓",
+      "class<firefox-developer-edition>": "󰈹",
+      "class<kitty|konsole|[Aa]lacritty>": "",
+      "class<kitty-dropterm>": "",
+      "class<com.mitchellh.ghostty>": "",
+      "class<org.wezfurlong.wezterm>": "",
+      "class<Warp|warp|dev.warp.Warp|warp-terminal>": "󰰭",
+      "class<[Tt]hunderbird|[Tt]hunderbird-esr>": "󰇰",
+      "class<eu.betterbird.Betterbird>": "󰇰",
+      "title<.*gmail.*>": "󰊫",
+      "class<[Tt]elegram-desktop|org.telegram.desktop|io.github.tdesktop_x64.TDesktop>": "",
+      "class<discord|discord-canary|[Ww]ebcord|[Vv]esktop|com.discordapp.Discord|dev.vencord.Vesktop>": "󰙯",
+      "class<[Ss]ignal|signal-desktop|org.signal.Signal>": "󰍩",
+      "title<.*Signal.*>": "󰍩",
+      "title<.*whatsapp.*>": "󰈯",
+      "title<.*zapzap.*>": "󰈯",
+      "title<.*messenger.*>": "󰉃",
+      "title<.*facebook.*>": "󰈌",
+      "title<.*ChatGPT.*>": "󰚩",
+      "title<.*deepseek.*>": "󰚩",
+      "title<.*qwen.*>": "󰚩",
+      "class<subl>": "󰅳",
+      "class<slack>": "󰒱",
+      "class<mpv>": "󰐹",
+      "class<celluloid|Zoom>": "󰕰",
+      "class<Cider>": "󰓇",
+      "title<.*Picture-in-Picture.*>": "󰋼",
+      "title<.*youtube.*>": "󰗃",
+      "class<vlc>": "󰕼",
+      "class<[Kk]denlive|org.kde.kdenlive>": "󰨜",
+      "title<.*cmus.*>": "󰝚",
+      "class<[Ss]potify>": "󰓇",
+      "class<Plex>": "󰚺",
+      "class<virt-manager>": "󰢙",
+      "class<.virt-manager-wrapped>": "󰢙",
+      "class<remote-viewer|virt-viewer>": "󰢙",
+      "class<virtualbox manager>": "󰁽",
+      "title<virtualbox>": "󰁽",
+      "class<remmina|org.remmina.Remmina>": "󰒋",
+      "class<VSCode|code|code-url-handler|code-oss|codium|codium-url-handler|VSCodium>": "󰨞",
+      "class<dev.zed.Zed>": "󰵁",
+      "class<codeblocks>": "󰅩",
+      "title<.*github.*>": "󰊤",
+      "class<mousepad>": "󰈔",
+      "class<libreoffice-writer>": "󰈑",
+      "class<libreoffice-startcenter>": "󰈐",
+      "class<libreoffice-calc>": "󰈗",
+      "title<.*nvim ~.*>": "󰡄",
+      "title<.*vim.*>": "",
+      "title<.*nvim.*>": "",
+      "title<.*figma.*>": "󰙨",
+      "title<.*jira.*>": "󰜫",
+      "class<jetbrains-idea>": "󰮡",
+      "class<obs|com.obsproject.Studio>": "󰋼",
+      "class<polkit-gnome-authentication-agent-1>": "󰌋",
+      "class<nwg-look>": "󰊪",
+      "class<nwg-displays>": "󰹑",
+      "class<[Pp]avucontrol|org.pulseaudio.pavucontrol>": "󰓃",
+      "class<steam>": "󰓓",
+      "class<thunar|nemo>": "󰉋",
+      "class<Gparted>": "󰋊",
+      "class<gimp>": "󰎦",
+      "class<emulator>": "󰛏",
+      "class<android-studio>": "󰀲",
+      "class<org.pipewire.Helvum>": "󰓃",
+      "class<localsend>": "󰇮",
+      "class<PrusaSlicer|UltiMaker-Cura|OrcaSlicer>": "󰬎",
+      "class<io.github.kolunmi.Bazaar>": "󰑜",
+      "title<^Bazaar$>": "󰑜",
+      "class<com.gabm.satty>": "󰈀",
+      "title<^satty$>": "󰈀",
+      "class<[Bb]ox[Bb]uddy|io.github.dvlv.boxbuddy|io.github.dvlv.BoxBuddy>": "󰏗",
+      "title<.*BoxBuddy.*>": "󰏗",
+      "title<Hyprland Keybinds>": "󰌐",
+      "title<Niri Keybinds>": "󰌐",
+      "title<BSPWM Keybinds>": "󰌐",
+      "title<DWM Keybinds>": "󰌐",
+      "title<Emacs Leader Keybinds>": "󰌐",
+      "title<Kitty Configuration>": "󰌐",
+      "title<WezTerm Configuration>": "󰌐",
+      "title<Yazi Configuration>": "󰌐",
+      "title<Cheatsheets Viewer>": "󰋗",
+      "title<Documentation Viewer>": "󰋗",
+      "title<^Wallpapers$>": "󰸉",
+      "title<^Video Wallpapers$>": "󰈫",
+      "title<^qs-wlogout$>": "󰍃"
+    }
+  },
+
+  /* ----- ALTERNATIVE WORKSPACE STYLES (commented out, choose one) ----- */
+  /*
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "show-special": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "format-icons": {
+      "active": "󰝤",
+      "default": "󰝥"
+    }
+  },
+
+  "hyprland/workspaces#roman": {
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "show-special": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "format-icons": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "VI",
+      "7": "VII",
+      "8": "VIII",
+      "9": "IX",
+      "10": "X"
+    }
+  },
+
+  "hyprland/workspaces#numbers": {
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "show-special": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    }
+  }
+  */
+}

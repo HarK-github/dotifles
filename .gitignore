@@ -1,0 +1,42 @@
+# 1. Ignore EVERYTHING by default
+/*
+.*
+
+# 2. Re-allow the .config directory structure
+!/.config/
+
+# 3. Ignore everything INSIDE .config by default
+/.config/*
+
+# 4. ALLOW only your specific rices/tools
+!/.config/btop/
+!/.config/cava/
+!/.config/eww/
+!/.config/fastfetch/
+!/.config/ghostty/
+!/.config/hypr/
+!/.config/kitty/
+!/.config/nvim/
+!/.config/rofi/
+!/.config/swaync/
+!/.config/wallust/
+!/.config/waybar/
+!/.config/wlogout/
+
+# 5. Allow essential shell/git configs in home
+!/.zshrc
+!/.bashrc
+!/.p10k.zsh
+!/.gitignore
+
+# 6. Safety: Specifically block the Git metadata folder 
+# even if it's named .dotfiles or .git
+.dotfiles/
+.git/
+
+# 7. Block annoying local state files within the allowed folders
+**/.DS_Store
+**/target/
+**/*.log
+.config/hypr/wallpaper_effects/.wallpaper_current
+.config/rofi/.current_wallpaper

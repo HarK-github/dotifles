@@ -1,0 +1,148 @@
+/* =========================
+   Win11 Obsidian Edition for AGS
+   Transparency: 0.65 | Color: Obsidian Black
+   ========================= */
+
+*:not(popover) {
+  all: unset;
+}
+
+@import '../../../.config/waybar/wallust/colors-waybar.css';
+
+/* Obsidian Palette Definitions */
+@define-color obsidian-base rgba(10, 10, 10, 0.65);
+@define-color obsidian-alt rgba(20, 20, 20, 0.65);
+@define-color win11-border rgba(255, 255, 255, 0.08);
+@define-color win11-border-bright rgba(255, 255, 255, 0.15);
+@define-color text-main rgba(255, 255, 255, 0.95);
+@define-color text-dim rgba(255, 255, 255, 0.6);
+
+/* Base Rounding (Win11 standard is slightly more rounded) */
+widget {
+  border-radius: 0.545rem; /* 8px equivalent */
+  -gtk-outline-radius: 0.545rem;
+}
+
+/* -------------------------
+   Overview window shell
+   ------------------------- */
+.overview-window {
+  margin-top: 2.5rem;
+  background-color: @obsidian-base;
+  border-radius: 0.818rem; /* 12px */
+  padding: 0.75rem;
+  border: 1px solid @win11-border; 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* -------------------------
+   Search box (Win11 Pill)
+   ------------------------- */
+.overview-search-box {
+  transition: 200ms ease-out;
+  border-radius: 0.545rem; /* Win11 search is more rectangular-round now */
+  -gtk-outline-radius: 0.545rem;
+  border-bottom: 2px solid @color12; /* Accent "underline" look */
+  border-top: 1px solid @win11-border;
+  border-left: 1px solid @win11-border;
+  border-right: 1px solid @win11-border;
+  margin: 0.5rem;
+  min-width: 15rem;
+  min-height: 2.5rem;
+  padding: 0rem 1rem;
+  background-color: @obsidian-alt;
+  color: @text-main;
+  caret-color: @color12;
+  font-weight: 400;
+}
+
+.overview-search-box:focus {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-bottom: 2px solid @color12;
+}
+
+/* -------------------------
+   Search results panel
+   ------------------------- */
+.overview-search-results {
+  border-radius: 0.545rem;
+  border: 1px solid @win11-border;
+  margin: 0.5rem;
+  min-width: 28rem;
+  padding: 0.5rem;
+  background-color: @obsidian-base;
+  color: @text-main;
+}
+
+.overview-search-result-btn {
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  margin: 0.1rem 0;
+  background: transparent;
+  transition: 150ms;
+}
+
+.overview-search-result-btn:hover,
+.overview-search-result-btn:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* -------------------------
+   Tasks / Workspaces container
+   ------------------------- */
+.overview-tasks {
+  border-radius: 0.545rem;
+  border: 1px solid @win11-border;
+  margin: 0.5rem;
+  padding: 0.8rem;
+  background-color: @obsidian-alt;
+}
+
+/* Individual workspace tile */
+.overview-tasks-workspace {
+  border-radius: 0.4rem;
+  margin: 0.3rem;
+  background-image: url('../../rofi/.current_wallpaper');
+  background-size: cover;
+  border: 1px solid @win11-border;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* -------------------------
+   Window preview (tile) style
+   ------------------------- */
+.overview-tasks-window {
+  border-radius: 0.4rem;
+  transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(40, 40, 40, 0.65);
+  border: 1px solid @win11-border-bright;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.overview-tasks-window:hover {
+  background-color: rgba(60, 60, 60, 0.65);
+ 
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.overview-tasks-window-selected {
+  border: 2px solid @color12;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* -------------------------
+   Menus & Popovers
+   ------------------------- */
+.menu {
+  background-color: @obsidian-base;
+  border-radius: 0.545rem;
+  border: 1px solid @win11-border-bright;
+  padding: 0.4rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Text styles */
+.txt { color: @text-main; }
+.txt-dim { color: @text-dim; }
+
+/*# sourceMappingURL=style.css.map */

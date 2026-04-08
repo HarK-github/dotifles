@@ -1,0 +1,59 @@
+; VARS
+
+(defvar open_control_center false)
+(defvar open_osd false)
+(defvar open_launcher false)
+(defvar open_tray false)
+(defvar clipboard "[]")
+(defvar ANIM_DURATION "300ms")
+
+(defvar recorder_audio false)
+(defvar recorder_region false)
+(deflisten brightness_percent :initial "50"
+  "scripts/brightness.sh")
+; POLLS
+
+(defpoll recording :interval "1s"
+"pgrep 'wf-recorder' || echo false")
+ 
+
+; LISTENS
+(defvar current_theme "dark")
+(deflisten network :initial '{"essid": "lo", "signal": ""}'
+"scripts/network.sh")
+(defvar weather "null")
+(deflisten kb_layout :initial "en"
+"scripts/get_kb_layout.sh")
+
+ (defvar end-notifications "[]")
+(defvar end-histories "")
+(defvar end-replies "")
+(defvar end-reply-text "")
+
+;; Ensure your listeners have valid initial JSON structures
+(deflisten mpris :initial "{}" "~/.config/eww/scripts/mpris.sh")
+
+(deflisten mpris_positions :initial "{}" 
+  "scripts/mpris_pos.sh")
+
+(deflisten volume :initial "0" `scripts/volume.sh`)
+
+(defvar do-not-disturb false)
+  
+; Initialize apps variable with default structure
+(defvar apps '{"pinned": [], "apps": [], "filtered": [], "search": false}')(deflisten workspaces :initial "[]" "scripts/workspaces.sh")
+
+(deflisten current_workspace :initial "1" "scripts/get_active_workspace.sh")
+;; Get Day (1-31)
+(defpoll calendar_day :interval "10h" "date '+%d'")
+
+;; Get Month (0-11) - Note: we subtract 1 because JS/GTK months start at 0
+(defpoll calendar_month :interval "10h" "scripts/get_month.sh")
+
+;; Get Year
+(defpoll calendar_year :interval "10h" "date '+%Y'")
+
+;; Toggle state
+(defvar show_calendar false)
+(deflisten bluetooth :initial '{"enabled": false, "connected": false, "device": "Off"}'
+  "scripts/bluetooth_listener.sh")

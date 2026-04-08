@@ -1,0 +1,41 @@
+/* --- WORKSPACES CONTAINER --- */
+.workspaces {
+    background-color: transparent; /* Removed background */
+    border: none;                  /* Removed border for a floating look */
+    padding: 4px;
+    margin: 0 10px;
+    /* Box shadow removed as there is no background to shadow */
+}
+
+/* --- INDIVIDUAL WORKSPACE PILLS --- */
+.workspace {
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.05); /* Very subtle base for the pill */
+    margin: 0 5px;
+    padding: 6px 18px;             /* Wider padding for pill shape */
+    border-radius: 50px;           /* Max radius for perfect pill shape */
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth Pro UI feel */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    &.occupied {
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* --- ACTIVE PILL (PRO UI LOOK) --- */
+    &.current {
+        background-color: #00a2ff; /* Solid accent or high-opacity glass */
+        color: #ffffff;
+        padding: 6px 24px;         /* "Stretch" effect when active */
+        box-shadow: 0 0 15px rgba(0, 162, 255, 0.4); /* Outer glow */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-weight: 800;
+    }
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff; 
+    }
+}

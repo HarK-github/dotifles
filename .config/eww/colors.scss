@@ -1,0 +1,74 @@
+$background: #19131E;
+$foreground: #DEB9D5;
+$cursor:     #906278;
+
+$color0:  #403A46;
+$color1:  #18052D;
+$color2:  #310815;
+$color3:  #330813;
+$color4:  #370A18;
+$color5:  #672051;
+$color6:  #792966;
+$color7:  #C892BB;
+$color8:  #8C6683;
+$color9:  #20063D;
+$color10: #420B1B;
+$color11: #440B19;
+$color12: #4A0E20;
+$color13: #8A2B6C;
+$color14: #A13688;
+$color15: #C892BB;
+
+// --- Deep Obsidian & Midnight Logic Mapped ---
+$primary:            #370A18;           
+$onPrimary:          #ffffff;         
+$primaryContainer:   rgba(55,10,24, 0.15);
+$onPrimaryContainer: #4A0E20; 
+
+$secondary:          #8C6683;          
+$onSecondary:        #e0e0e0;        
+$secondaryContainer: rgba(140,102,131, 0.1);
+$onSecondaryContainer: #c0c0c0; 
+
+// Tertiary: Smoky Obsidian
+$tertiary:           #672051;           
+$onTertiary:         #f0f0f0;         
+$tertiaryContainer:  rgba(103,32,81, 0.1);
+$onTertiaryContainer: #8A2B6C;
+
+$error:              #18052D;
+$onError:            #ffffff;
+$errorContainer:     rgba(24,5,45, 0.2);
+$onErrorContainer:   #20063D;
+
+// Core Obsidian Foundation
+$bg-dark:            #19131E;            
+$onBackground:       #DEB9D5;        
+
+// Surface Logic
+$surface:            #403A46;             
+$onSurface:          #DEB9D5;           
+
+// Glass effects (Fixed Pipe Syntax)
+$bg-glass: rgba(55,10,24, 0.12);
+$bg-surface:         rgba(64,58,70, 0.6);      
+$surfaceVariant:     rgba(255, 255, 255, 0.05); 
+$onSurfaceVariant:   #C892BB;    
+
+$bg-hover:           rgba(222,185,213, 0.08);    
+$border-glass:       rgba(222,185,213, 0.1); 
+
+$text-primary:       #DEB9D5;
+$text-secondary:     #C892BB;      
+
+$accent:             #792966; 
+$accent-color:       #370A18;
+$outline:            #8C6683;             
+$shadow:             #000000;
+
+$inverseSurface:     #DEB9D5;
+$inverseOnSurface:   #19131E;
+$inversePrimary:     #4A0E20;
+
+$glass-bg:           rgba(25,19,30, 0.8);
+$active-bg:          rgba(55,10,24, 0.2);

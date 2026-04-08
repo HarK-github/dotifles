@@ -1,0 +1,74 @@
+$background: {{background}};
+$foreground: {{foreground}};
+$cursor:     {{cursor}};
+
+$color0:  {{color0}};
+$color1:  {{color1}};
+$color2:  {{color2}};
+$color3:  {{color3}};
+$color4:  {{color4}};
+$color5:  {{color5}};
+$color6:  {{color6}};
+$color7:  {{color7}};
+$color8:  {{color8}};
+$color9:  {{color9}};
+$color10: {{color10}};
+$color11: {{color11}};
+$color12: {{color12}};
+$color13: {{color13}};
+$color14: {{color14}};
+$color15: {{color15}};
+
+// --- Deep Obsidian & Midnight Logic Mapped ---
+$primary:            {{color4}};           
+$onPrimary:          #ffffff;         
+$primaryContainer:   rgba({{color4|rgb}}, 0.15);
+$onPrimaryContainer: {{color12}}; 
+
+$secondary:          {{color8}};          
+$onSecondary:        #e0e0e0;        
+$secondaryContainer: rgba({{color8|rgb}}, 0.1);
+$onSecondaryContainer: #c0c0c0; 
+
+// Tertiary: Smoky Obsidian
+$tertiary:           {{color5}};           
+$onTertiary:         #f0f0f0;         
+$tertiaryContainer:  rgba({{color5|rgb}}, 0.1);
+$onTertiaryContainer: {{color13}};
+
+$error:              {{color1}};
+$onError:            #ffffff;
+$errorContainer:     rgba({{color1|rgb}}, 0.2);
+$onErrorContainer:   {{color9}};
+
+// Core Obsidian Foundation
+$bg-dark:            {{background}};            
+$onBackground:       {{foreground}};        
+
+// Surface Logic
+$surface:            {{color0}};             
+$onSurface:          {{foreground}};           
+
+// Glass effects (Fixed Pipe Syntax)
+$bg-glass: rgba({{color4|rgb}}, 0.12);
+$bg-surface:         rgba({{color0|rgb}}, 0.6);      
+$surfaceVariant:     rgba(255, 255, 255, 0.05); 
+$onSurfaceVariant:   {{color7}};    
+
+$bg-hover:           rgba({{foreground|rgb}}, 0.08);    
+$border-glass:       rgba({{foreground|rgb}}, 0.1); 
+
+$text-primary:       {{foreground}};
+$text-secondary:     {{color7}};      
+
+$accent:             {{color6}}; 
+$accent-color:       {{color4}};
+$outline:            {{color8}};             
+$shadow:             #000000;
+
+$inverseSurface:     {{foreground}};
+$inverseOnSurface:   {{background}};
+$inversePrimary:     {{color12}};
+
+$glass-bg:           rgba({{background|rgb}}, 0.8);
+$active-bg:          rgba({{color4|rgb}}, 0.2);

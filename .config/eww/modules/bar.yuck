@@ -1,0 +1,51 @@
+;; Point the listener to your new Python script
+(deflisten wlr_apps :initial "[]" "/usr/bin/python3 -u ~/.config/eww/wlr-icon-wrapper.py")
+
+(defwidget taskbar []
+  (box :orientation "h"
+       :space-evenly false 
+       :spacing 10 ;; More breathing room between big icons
+       :class "taskbar"
+    (for app in wlr_apps
+      (button
+        :onclick "wlr-apps -x \"f ${app.id}\""
+		:class "app_item ${app.active ? 'active' : ''}"
+        
+        (image 
+          :class "app_icon"
+          :icon {app.icon}  
+          :icon-size "dnd"
+:tooltip "${app.app_id}"
+          
+        )
+      )
+    )
+  )
+)
+(defwidget bar []
+    (box :class "bar-widget" :orientation "h" :space-evenly true
+
+        (box :orientation "h" :space-evenly false :halign "start"
+           (osettings-button) 
+            (workspaces)
+        )
+
+      (box :orientation "h" :space-evenly false :halign "center"
+      
+	       (box :orientation "h" :space-evenly false :halign "center" :spacing 10
+            
+            (taskbar)
+       
+            
+        )
+	  )
+        (box :orientation "h" :space-evenly false :halign "end"
+            (tray_button)
+            (language)
+            (picker)
+            (indicator) 
+        )
+
+    )
+    
+)

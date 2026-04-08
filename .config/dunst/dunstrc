@@ -1,0 +1,3 @@
+[global]
+    # This runs every time a notification pops up
+    script = ~/.config/eww/scripts/notifications_daemon.py

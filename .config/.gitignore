@@ -1,0 +1,27 @@
+# Ignore everything by default
+/*
+
+# Whitelist your Rice components
+!/ags/
+!/btop/
+!/cava/
+!/dunst/
+!/eww/
+!/fastfetch/
+!/ghostty/
+!/hypr/
+!/kitty/
+!/nvim/
+!/rofi/
+!/swaync/
+!/wallust/
+!/waybar/
+!/wezterm/
+!/wlogout/
+!/wofi/
+
+# Whitelist global Git config if you want it tracked here
+!.gitignore
+
+# Explicitly ignore all backup folders
+*-backup-*

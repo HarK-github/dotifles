@@ -1,0 +1,111 @@
+/* --- Variables & Colors --- */
+$bg-main: rgba(26, 26, 26, 0.65);      /* Obsidian Black Opacity */
+$bg-column: rgba(30, 30, 30, 0.4);
+$accent: #89b4fa;                     /* Soft Blue Accent */
+$fg-main: #cdd6f4;                    /* Catppuccin-style text */
+$fg-dim: #a6adc8;
+$error: #f38ba8;                      /* Red for delete/high priority */
+$success: #a6e3a1;                    /* Green for completion */
+
+/* --- Layout Containers --- */
+.todo-layout {
+    background-color: $bg-main;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.column-box {
+    background-color: $bg-column;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* --- Header & Typography --- */
+.column-header {
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+.column-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $accent;
+    letter-spacing: 0.5px;
+}
+
+/* --- Interactive Elements --- */
+.column-input {
+    background: rgba(0, 0, 0, 0.4);
+    color: $fg-main;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    transition: all 200ms ease;
+
+    &:focus {
+        border-bottom: 2px solid $accent;
+        background: rgba(0, 0, 0, 0.6);
+    }
+}
+
+.task-card {
+    background: rgba(45, 45, 45, 0.5);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 4px 0;
+    transition: transform 100ms ease;
+
+    &:hover {
+        background: rgba(55, 55, 55, 0.7);
+    }
+}
+
+/* --- Task States --- */
+.task-label {
+    color: $fg-main;
+    font-size: 0.95rem;
+}
+
+.completed-text {
+    color: $fg-dim;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task-check {
+    color: $accent;
+    font-size: 1.2rem;
+    
+    &:hover { color: $success; }
+}
+
+.task-del {
+    color: rgba(243, 139, 168, 0.4); /* Dim red until hover */
+    font-size: 1.1rem;
+    
+    &:hover { color: $error; }
+}
+
+.clear-btn {
+    color: $fg-dim;
+    font-size: 1rem;
+    
+    &:hover { color: $error; }
+}
+
+/* --- Scrollbar Styling --- */
+scrollbar {
+    background: transparent;
+    
+    slider {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        min-height: 40px;
+        
+        &:hover { background: rgba(255, 255, 255, 0.2); }
+    }
+}

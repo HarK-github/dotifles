@@ -1,0 +1,63 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+// ### DEFAULT Laptop  - Top ### //
+{
+"include": [
+  "$HOME/.config/waybar/Modules",
+  "$HOME/.config/waybar/ModulesWorkspaces",
+  "$HOME/.config/waybar/ModulesCustom",
+  "$HOME/.config/waybar/ModulesGroups",
+  "$HOME/.config/waybar/UserModules",
+  ],
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "bottom",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 3,
+"margin-left": 8,
+"margin-right": 8,
+
+"modules-left": [
+	"custom/separator#blank",
+	"custom/cava_mviz",
+	"custom/separator#blank",
+	"custom/playerctl",
+	"hyprland/window",
+
+	"hyprland/workspaces#rw",
+	],
+
+"modules-center": [ 
+	"custom/separator#blank", 
+	"wlr/taskbar",
+	],
+
+"modules-right": [
+	"tray",
+	"group/laptop",
+	"group/mobo_drawer",
+	"group/audio",
+	"custom/nightlight",
+	"group/status",
+
+	"clock",
+	"custom/weather",
+	"idle_inhibitor",	
+	"custom/hint", 
+
+
+	],  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 30,
+    "icon-theme": "Papirus-Dark",
+    "all-outputs": true,
+    "on-click": "activate",
+    "on-click-right": "close",
+    "tooltip": true,
+    "tooltip-format": "{title}"
+  },
+} 

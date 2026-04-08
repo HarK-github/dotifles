@@ -1,0 +1,65 @@
+(deflisten tasks_data :initial '{"high":[],"low":[],"keep_looking":[]}' "./todo_bin")
+
+;; Local variables to hold input text for each column
+(defvar input_high "")
+(defvar input_low "")
+(defvar input_keep "")
+
+(defwidget task_item [task priority]
+  (box :class "task-card ${task.completed ? 'task-done' : ''}" 
+       :orientation "h" :space-evenly false :spacing 10
+    (button :class "task-check" 
+            :onclick "echo 'toggle ${priority} ${task.id}' > /tmp/todo_pipe"
+            (label :text "${task.completed ? '󰄬' : '󰄱'}"))
+    
+    (label :text "${task.text}" :hexpand true :halign "start" :wrap true
+           :class "task-label ${task.completed ? 'completed-text' : ''}")
+    
+    (button :class "task-del" 
+            :onclick "echo 'remove ${priority} ${task.id}' > /tmp/todo_pipe" "󰅖")
+  )
+)
+;; 1. Updated Widget Definition (Removed the redundant 'priority' argument)
+(defwidget task_column [title tasks key input_var]
+  (box :class "column-box" :orientation "v" :space-evenly false :spacing 10
+    (box :class "column-header" :space-evenly true
+      (label :class "column-title" :text title)
+      (button :class "clear-btn" :halign "end"
+              :onclick "echo 'clear ${key}' > /tmp/todo_pipe" "󰃢"))
+    
+    ;; Input Field
+    (input :class "column-input"
+    
+           :value input_var
+           ;; This logic clears the specific input variable based on the key
+           :onaccept "echo 'add ${key} {}' > /tmp/todo_pipe; eww update input_${key}=''" )
+    
+    (scroll :vscroll true :height 450 :hexpand true
+      (box :orientation "v" :spacing 8 :space-evenly false
+        (for task in tasks
+          ;; Passing 'key' here to the task_item
+          (task_item :task task :priority key))))
+  )
+)
+(defwidget todo_widget []
+  (box :class "todo-layout" 
+       :spacing 20
+       :orientation "h"
+       :space-evenly true
+       :focusable "ondemand"
+    (task_column :title "Priority" 
+                 :tasks "${tasks_data.high}" 
+                 :key "high" 
+                 :input_var input_high)
+                 
+    (task_column :title "Low Priority" 
+                 :tasks "${tasks_data.low}" 
+                 :key "low" 
+                 :input_var input_low)
+                 
+    (task_column :title "Keep Looking" 
+                 :tasks "${tasks_data.keep_looking}" 
+                 :key "keep_looking" 
+                 :input_var input_keep)
+  )
+)

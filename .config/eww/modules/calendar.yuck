@@ -1,0 +1,14 @@
+(defwidget cal_widget []
+  (box :orientation "v" :space-evenly false :valign "end" :class "calendar-window-container"
+    (revealer :transition "slideup" 
+              :reveal {show_calendar == true ? true : false} 
+              :duration {ANIM_DURATION}
+      (box :orientation "v" :space-evenly false :class "calendar-box"
+        (calendar :class "cal-content" 
+                  :show-heading true 
+                  :show-day-names true
+                  :onclick "notify-send 'Calendar' 'Selected: {0}/{1}/{2}'")
+      )
+    )
+  )
+)

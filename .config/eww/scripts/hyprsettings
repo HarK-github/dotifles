@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+getoptions(){
+  fetch() {
+    # Added >/dev/null to the hyprctl call itself to silence "ok"
+    local val=$(hyprctl getoption "$1" -j 2>/dev/null | gojq -r -c "$2" 2>/dev/null)
+    if [[ -z "$val" || "$val" == "null" || "$val" == "[[EMPTY]]" ]]; then
+      echo "$3"
+    else
+      echo "$val"
+    fi
+  }
+
+  rounding=$(fetch "decoration:rounding" ".int" 0)
+  gaps_in=$(fetch "general:gaps_in" ".int" 0)
+  gaps_out=$(fetch "general:gaps_out" ".int" 0)
+  border_size=$(fetch "general:border_size" ".int" 0)
+  force_no_accel=$(fetch "input:force_no_accel" ".int" 0)
+  input_sensitivity=$(fetch "input:sensitivity" ".float" 0.0)
+  tp_typing=$(fetch "input:touchpad:disable_while_typing" ".int" 0)
+  tp_click=$(fetch "input:touchpad:clickfinger_behavior" ".int" 0)
+  blur=$(fetch "decoration:blur" ".int" 0)
+  blur_size=$(fetch "decoration:blur_size" ".int" 0)
+  blur_passes=$(fetch "decoration:blur_passes" ".int" 0)
+  blur_xray=$(fetch "decoration:blur_xray" ".int" 0)
+  
+  nl_raw=$(hyprctl getoption decoration:screen_shader -j 2>/dev/null | gojq -r -c '.str' 2>/dev/null)
+  if [[ "$nl_raw" == *"nothing.frag"* || "$nl_raw" == "[[EMPTY]]" || -z "$nl_raw" ]]; then
+    nightlight='false'
+  else
+    nightlight='true'
+  fi
+
+  # Print ONLY the JSON string on a single line
+  echo "{\"rounding\":$rounding,\"gaps_in\":$gaps_in,\"gaps_out\":$gaps_out,\"border_size\":$border_size,\"force_no_accel\":$force_no_accel,\"input_sensitivity\":$input_sensitivity,\"touchpad_disable_while_typing\":$tp_typing,\"touchpad_clickfinger_behavior\":$tp_click,\"blur\":$blur,\"blur_size\":$blur_size,\"blur_passes\":$blur_passes,\"blur_xray\":$blur_xray,\"nightlight\":$nightlight,\"dummy\":0}"
+}
+
+if [ "$1" == "--once" ]; then
+  getoptions
+  exit 0
+elif [ "$1" == "tickle" ]; then
+  # Silence the hyprctl output here too
+  hyprctl keyword input:force_no_accel $(hyprctl getoption input:force_no_accel -j | gojq -r -c '.int') > /dev/null 2>&1
+else
+  getoptions # Initial call
+  # Use -u for unbuffered to ensure clean delivery
+  socat -u UNIX-CONNECT:"$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" - | rg --line-buffered "activelayout>>" | while read -r line; do
+    getoptions
+  done
+fi

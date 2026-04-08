@@ -1,0 +1,373 @@
+/* ============================================
+   WAYBAR - MATERIAL DESIGN 3 DARK THEME
+   With Taskbar Module Integration
+   ============================================ */
+
+@define-color shelf_bg rgba(28, 27, 31, 0.9);
+@define-color pill_bg rgba(50, 48, 55, 0.85);
+@define-color pill_hover rgba(73, 69, 78, 0.95);
+@define-color pill_active #D0BCFF;
+@define-color text_main #E6E1E6;
+@define-color text_secondary #938F99;
+@define-color accent_color #D0BCFF;
+@define-color accent_dark #6750A4;
+@define-color error_color #F2B8B5;
+@define-color success_color #81C784;
+@define-color warning_color #FFB74D;
+
+* {
+  font-family: "Material Symbols Rounded", "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+  font-size: 12px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+/* ============================================
+   MAIN WINDOW STYLING
+   ============================================ */
+window#waybar {
+  background: @shelf_bg;
+  border-radius: 16px;
+  margin: 10px 12px 0 12px;
+  padding: 0 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 48px;
+}
+
+/* ============================================
+   MODULE GROUPS
+   ============================================ */
+.modules-left,
+.modules-center,
+.modules-right {
+  background: transparent;
+  padding: 6px 0;
+}
+
+/* ============================================
+   LEFT SECTION: LAUNCHER & WORKSPACES
+   ============================================ */
+
+#custom-launcher {
+  background: @pill_bg;
+  border-radius: 50%;
+  padding: 0;
+  margin: 2px 0;
+  min-width: 38px;
+  min-height: 38px;
+  font-size: 22px;
+  color: @accent_color;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#custom-launcher:hover {
+  background: @pill_hover;
+  color: @accent_color;
+}
+
+#custom-launcher:active {
+  background: rgba(208, 188, 255, 0.2);
+}
+
+#hyprland-workspaces {
+  background: @pill_active;
+  border-radius: 12px;
+  padding: 4px 10px;
+  margin: 2px 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1C1B1F;
+}
+
+#hyprland-workspaces button {
+  background: transparent;
+  border: none;
+  color: rgba(28, 27, 31, 0.6);
+  padding: 0 6px;
+  min-width: 20px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+#hyprland-workspaces button:hover {
+  color: #1C1B1F;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+#hyprland-workspaces button.active {
+  color: #1C1B1F;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+#hyprland-workspaces button.urgent {
+  color: @error_color;
+}
+
+/* ============================================
+   CENTER SECTION: TASKBAR & APP ICONS
+   ============================================ */
+
+#wlr-taskbar {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+#wlr-taskbar button {
+  background: transparent;
+  border-radius: 10px;
+  padding: 0 2px;
+  margin: 0 2px;
+  min-width: 38px;
+  min-height: 38px;
+  font-size: 20px;
+  color: @text_main;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+#wlr-taskbar button:hover {
+  background: @pill_bg;
+  color: @accent_color;
+}
+
+#wlr-taskbar button.active {
+  background: rgba(208, 188, 255, 0.2);
+  color: @accent_color;
+}
+
+/* Custom app icons */
+#custom-firefox {
+  background: transparent;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0 3px;
+  min-width: 38px;
+  min-height: 38px;
+  font-size: 22px;
+  color: @text_main;
+  transition: 0.2s;
+}
+
+#custom-firefox:hover {
+  background: @pill_bg;
+  color: @accent_color;
+}
+
+#custom-mail,
+#custom-files,
+#custom-games,
+#custom-code {
+  background: transparent;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0 3px;
+  min-width: 38px;
+  min-height: 38px;
+  font-size: 22px;
+  color: @text_main;
+  transition: all 0.2s ease;
+}
+
+#custom-mail:hover,
+#custom-files:hover,
+#custom-games:hover,
+#custom-code:hover {
+  background: @pill_bg;
+  color: @accent_color;
+}
+
+/* ============================================
+   RIGHT SECTION: SYSTEM TRAY
+   ============================================ */
+
+#mpris {
+  background: @pill_bg;
+  border-radius: 10px;
+  padding: 4px 12px;
+  margin: 2px 0;
+  color: @text_main;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+#mpris:hover {
+  background: @pill_hover;
+  color: @accent_color;
+}
+
+#keyboard-state {
+  background: @pill_bg;
+  border-radius: 10px;
+  padding: 4px 12px;
+  margin: 2px 0;
+  color: @text_secondary;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#keyboard-state:hover {
+  background: @pill_hover;
+  color: @accent_color;
+}
+
+#group-hardware {
+  background: @pill_bg;
+  border-radius: 10px;
+  padding: 4px 10px;
+  margin: 2px 0;
+  transition: all 0.2s ease;
+}
+
+#group-hardware:hover {
+  background: @pill_hover;
+}
+
+#pulseaudio {
+  color: @text_main;
+  padding: 0 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#pulseaudio:hover {
+  color: @accent_color;
+}
+
+#network {
+  color: @text_main;
+  padding: 0 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#network:hover {
+  color: @success_color;
+}
+
+#network.disconnected {
+  color: @error_color;
+}
+
+#battery {
+  color: @text_main;
+  padding: 0 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#battery:hover {
+  color: @accent_color;
+}
+
+#battery.charging {
+  color: @success_color;
+}
+
+#battery.critical {
+  color: @error_color;
+  animation: critical-blink 1s infinite;
+}
+
+@keyframes critical-blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+#custom-notifications {
+  background: @pill_bg;
+  border-radius: 10px;
+  padding: 4px 12px;
+  margin: 2px 0;
+  color: @text_main;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#custom-notifications:hover {
+  background: @pill_hover;
+  color: @accent_color;
+}
+
+#custom-notifications.notification {
+  color: @error_color;
+  background: rgba(242, 184, 181, 0.1);
+}
+
+#clock {
+  background: @pill_bg;
+  border-radius: 10px;
+  padding: 4px 12px;
+  margin: 2px 0;
+  color: @text_main;
+  font-weight: 500;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+#clock:hover {
+  background: @pill_hover;
+  color: @accent_color;
+}
+
+#custom-expand {
+  background: @pill_bg;
+  border-radius: 10px;
+  padding: 4px 10px;
+  margin: 2px 0;
+  color: @text_main;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+#custom-expand:hover {
+  background: @pill_hover;
+  color: @accent_color;
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+tooltip {
+  background: rgba(28, 27, 31, 0.95);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  color: @text_main;
+  font-size: 11px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   ANIMATIONS & TRANSITIONS
+   ============================================ */
+
+button:active {
+  background: rgba(208, 188, 255, 0.15);
+}
+
+/* Smooth fade for dynamic content */
+#wlr-taskbar button,
+#mpris,
+#clock {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+ 

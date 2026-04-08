@@ -1,0 +1,36 @@
+ 
+
+.bar-widget {
+    background-color: $glass-bg;  
+    padding: 2px 8px; // Very slim vertical padding
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.taskbar {
+    background-color: transparent;
+}
+
+.app_item { 
+    margin: 0 1px;
+    padding: 4px; // Small padding for a 24px icon
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    &.active {
+        background-color: $active-bg;
+        // Small dot indicator instead of a big bar for 24px size
+        background-image: radial-gradient(circle at center bottom, $accent 0%, transparent 20%);
+    }
+}
+
+.app_icon {
+    /* Clamping to 24px */
+    min-width: 24px; 
+    min-height: 24px;
+}

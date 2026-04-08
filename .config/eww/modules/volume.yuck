@@ -1,0 +1,33 @@
+(defwidget volume_scale []
+  (overlay :hexpand true
+    (scale :min 0 :max 101
+           :active {volume != "muted"}
+           :value {volume == "muted" ? 0 : volume}
+           :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+           :class "volume-scale")
+
+    (label :halign "start"
+           :style "font-family: 'Material Symbols Outlined'; font-size: 24px;"
+           :text {volume == "muted" 
+                  ? ""   ;; volume_off
+                  : (round(volume ?: 0, 0) < 2 
+                     ? "" ;; volume_mute
+                     : (round(volume ?: 0, 0) < 67 
+                        ? "" ;; volume_down
+                        : ""))}) ;; volume_up
+  )
+)
+(defwidget volume_control_center []
+
+  (box :orientation "h" :class "volume-control-center" :space-evenly false
+    (volume_scale)
+    
+    (button :class "volume-mute ${volume == 'muted' ? 'active' : ''}" 
+            :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle" 
+            "󰝟")
+    
+    (button :class "volume-arrow" 
+            :onclick "scripts/toggle_control_center.sh close && pavucontrol &" 
+            "󰅂")
+  )
+)
