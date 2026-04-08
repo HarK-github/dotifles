@@ -9,15 +9,15 @@
 )
 
 (defwindow control_center
-    :monitor 0
-    :stacking "overlay"
-    :geometry (geometry
-                    :anchor "bottom right"
-                    :width "2px"
-                    :height "2px"
-                )
-    :namespace "eww"
-    (control_centers)
+  :monitor 0
+  :stacking "overlay"
+  :windowtype "normal"
+  :wm-ignore true
+  :geometry (geometry :x "10px" 
+                      :y "10px" 
+                      :anchor "bottom right" 
+                      :width "400px")
+  (control_centers)
 )
 (defwindow calendar_popup
     :monitor 0
@@ -121,17 +121,4 @@
     :namespace "eww"
     (bg_widgets)
 )
-(defwindow start-menu
-  :monitor 0
-  :geometry (geometry :x "540"  ;; Adjusted to account for tray width
-                     :y "30"
-                     :anchor "bottom center"
-                     :width 910  ;; 600px (menu) + 300px (tray) + 10px spacing
-                     :height 500)
-  :reserve (struts :side "b" :distance "0px")
-  :windowtype "normal" 
-  :focusable "ondemand"
-   (revealer :transition "slideup"
-            :reveal start_menu_open
-            :duration "300ms"
-  (start_menu)))
+ 

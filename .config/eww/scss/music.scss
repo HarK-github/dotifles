@@ -60,3 +60,50 @@
     color: $onSurfaceVariant;
     margin-top: 0.25rem;
 }
+.bar-music {
+    /* Main Pill Container */
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-position: center;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 4px; 
+    .bar-music-glass-overlay {
+        /* Your variable for the dimming layer */
+        background-color: $bg-glass; 
+        padding: 4px; 
+        border-radius: 999px;
+    }
+
+    /* Arrow button with NO background */
+    .tray-toggle {
+        background: none;
+        border: none;
+        box-shadow: none;
+        color: #ffffff;
+        font-size: 16px;
+        padding: 0 6px; 
+
+        &:hover {
+            /* Using your accent variable for the hover state */
+            color: $onPrimaryContainer;  
+        }
+    }
+
+    .music-action-glass {
+        /* Your "Button Glass" variable */
+        background-color: $bg-glass; 
+        color: #1a1515;
+        font-size: 14px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid black;  
+
+        &:hover {
+            /* Swapping to your primary container color on hover */
+            background-color: $onPrimaryContainer;
+            border: 1px solid $onPrimaryContainer;
+            color: #000000; /* Darker text for contrast on bright accent */
+        }
+    }
+}

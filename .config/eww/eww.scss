@@ -1,10 +1,11 @@
 * {
     all: unset;
-        font-family: "Segoe UI Variable Display", "Segoe UI", "Segoe UI Custom", system-ui, -apple-system, sans-serif;
+    font-family: "Segoe UI Variable Display", "Segoe UI", "Segoe UI Custom", system-ui, -apple-system, sans-serif;
 }
 
 
-@import "scripts/colors/colors.scss";
+@import "colors.scss";
+
 @import "scss/lib.scss";
 
 @import "scss/bar.scss";
@@ -33,3 +34,4 @@
 @import "scss/notifications.scss";
 @import "scss/recorder_menu.scss";
 @import "scss/picker.scss";
+@import "scss/todo.scss";

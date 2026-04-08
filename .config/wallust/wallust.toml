@@ -48,6 +48,7 @@ waybar.target = '~/.config/waybar/wallust/colors-waybar.css'
 
 kitty.template = 'colors-kitty.conf'
 kitty.target = '~/.config/kitty/kitty-themes/01-Wallust.conf'
+ 
 
 ghostty.template = 'colors-ghostty.conf'
 ghostty.target = '~/.config/ghostty/wallust.conf'
@@ -66,3 +67,5 @@ quickshell.target = '~/.config/quickshell/qml_color.json'
 
 #zathura.template = 'colors-zathura'
 #zathura.target = '~/.config/zathura/zathurarc'
+eww.template = 'colors-eww.scss'
+eww.target = '~/.config/eww/colors.scss'

@@ -1,14 +1,25 @@
  
 
 .bar-widget {
-    background-color: $glass-bg;  
-    padding: 2px 8px; // Very slim vertical padding
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(23, 23, 23, 0.8);
+    padding: 5px 1px; // Very slim vertical padding
+   // margin: 0px 4px;
+    //border-radius: 999px;
+    border-top: 1px solid rgba(255, 255, 255, 0.169);
 }
 
+// Theme matching
+// .bar-widget {
+//     background-color: $glass-bg;  
+//     padding: 2px 1px; // Very slim vertical padding
+//     margin: 0px 4px;
+//     border-radius: 999px;
+//     border: 1px solid rgba(255, 255, 255, 0.05);
+// }
+
 .taskbar {
-    background-color: transparent;
+    background-color: $bg-glass;
+    border-radius: 16px;
 }
 
 .app_item { 
@@ -25,8 +36,7 @@
     &.active {
         background-color: $active-bg;
         // Small dot indicator instead of a big bar for 24px size
-        background-image: radial-gradient(circle at center bottom, $accent 0%, transparent 20%);
-    }
+background-image: linear-gradient(to top, $accent 3px, transparent 3px);    }
 }
 
 .app_icon {

@@ -111,6 +111,7 @@ wallust run -s "$wallpaper_path" || true
 wallust_targets=(
 "$HOME/.config/waybar/wallust/colors-waybar.css"
   "$HOME/.config/rofi/wallust/colors-rofi.rasi"
+  "$HOME/.config/eww/colors.scss" 
   "$HOME/.cache/wallust/colors.scss"   # AGS usually reads from here
   "$HOME/.cache/wallust/colors.css"    # Eww usually reads from here
 )

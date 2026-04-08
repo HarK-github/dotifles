@@ -1,7 +1,9 @@
+(defvar open_mus_bar false)
+(defvar open_mus_tray false)
 (defwidget music []
   (revealer :transition "slideup" 
             ;; Use ?. and provide a fallback string to prevent the "json-value" error
-            :reveal { (mpris?.name ?: "") != "" } 
+            :reveal open_mus_tray
             :duration "300ms"
     (box :orientation "v" :class "music" :space-evenly false
       (box :orientation "h" :space-evenly false
@@ -37,3 +39,44 @@
                 (button :class "music-action" :onclick "playerctl previous" "󰒮")
         (button :class "music-action" :onclick "playerctl play-pause" {mpris.status == "Playing" ? "󰓛" : "󰐊"})
         (button :class "music-action" :onclick "playerctl next" "󰒭")))))
+(defwidget bar-music []
+  (box :class "bar-music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+       :style "background-image: url('${mpris.artUrl != "" ? mpris.artUrl : "~/.config/hypr/wallpaper_effects/.wallpaper_current"}');"    
+    (box :class "bar-music-glass-overlay"
+         :orientation "h"
+         :space-evenly false
+         :spacing 4
+      
+      ;; 1. The Arrow Toggle (Only toggles the bar width)
+      (button :class "tray-toggle"
+              :onclick "eww update open_mus_bar=${!open_mus_bar}"
+              {open_mus_bar ? "󰅁" : "󰅂"})
+
+      ;; 2. The Sliding Tray
+      (revealer :transition "slideright"
+                :reveal open_mus_bar
+                :duration "300ms"
+        (box :orientation "h" :spacing 8 :class "music-tray-content" :style "margin-left: 5px;"
+          (button :class "music-action-glass" :onclick "playerctl previous" "󰒮")
+          (button :class "music-action-glass" :onclick "playerctl play-pause" 
+                  {mpris.status == "Playing" ? "󰓛" : "󰐊"})
+          (button :class "music-action-glass" :onclick "playerctl next" "󰒭")
+          
+          ;; 3. The Popup Toggle (Inside the tray)
+          (button :class "tray-toggle"
+                  :onclick "eww update open_mus_tray=${!open_mus_tray}"
+                  "󰏝")
+        )
+      )
+
+      ;; 4. Clickable area when tray is CLOSED
+      ;; This replaces the eventbox so you can still click the pill to open the popup
+      (button :onclick "eww update open_mus_tray=${!open_mus_tray}"
+              :visible {!open_mus_bar}
+              (label :text "󰎆" :style "margin: 0 10px;"))
+    )
+  )
+)

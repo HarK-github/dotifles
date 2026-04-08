@@ -52,27 +52,21 @@
   )
 )
 (defwidget control_centers []
-  (revealer 
-    :reveal {open_control_center} 
-    :transition "slideleft" 
-    :duration "300ms"
-    
+  (box :orientation "v" 
+       :space-evenly false
+       :class "control-center-window-content"
+       
+    ;; Notifications Component (Top)
+    (notification_center)
+
+    ;; System Controls (Bottom)
     (box :orientation "v" 
-         :space-evenly false  
-      
-      (music)
-
-      ;; Notifications Component
-       (notification_center)
-
-      (box :orientation "v" 
-           :space-evenly false 
-           :class "control-center" 
-        (user)
-        (quick_settings)
-        (volume_control_center)
-        (brightness_control_center)
-      )
+         :space-evenly false 
+         :class "control-center" 
+      (user)
+      (quick_settings)
+      (volume_control_center)
+      (brightness_control_center)
     )
   )
 )

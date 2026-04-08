@@ -4,15 +4,19 @@
             (network)
             (do-not-disturb_mode)
         )
-        (box :orientation "h" :space-evenly true
-            (theme)
-            (recorder)
-        )
          (box :orientation "h" :space-evenly true
-            (bluetooth_qs)
+            (theme)
+            (battery_qs)
         )
          (box :orientation "h" :space-evenly true
             (easyeffects_qs)
+
+            (recorder)
+        )
+
+        (box :orientation "h" :space-evenly true
+            
+            (bluetooth_qs)
         )
 
     )
@@ -48,12 +52,17 @@
 )
 
 (defwidget network []
-    (quick_settings_button  :condition {network.essid == "lo"} 
-                            :action {network.essid == "lo" ? "XDG_CURRENT_DESKTOP='gnome' gnome-control-center wifi &" : "nmcli connection down id '${network.essid}'"}
-                            :icon {network.essid == "lo" ? "󰤭" : network.signal == "" ? "󰤩" : network.signal < 25 ? "󰤟" : network.signal < 50 ? "󰤢" : network.signal < 75 ? "󰤥" : "󰤨"}
-                            :label {network.essid == "lo" ? "Not connected" : network.essid}
-                            :class "left-top-plite"
-    )
+(eventbox :onrightclick "XDG_CURRENT_DESKTOP='gnome' gnome-control-center wifi &"
+  (quick_settings_button  
+    :condition {network.essid == "lo"} 
+    :action {network.essid == "lo" ? "XDG_CURRENT_DESKTOP='gnome' gnome-control-center wifi &" : "nmcli connection down id '${network.essid}'"}
+    :icon {network.essid == "lo" ? "󰤭" : network.signal == "" ? "󰤩" : network.signal < 25 ? "󰤟" : network.signal < 50 ? "󰤢" : network.signal < 75 ? "󰤥" : "󰤨"}
+    
+    ;; Use a ternary to set a hard limit, or handle it in the label properties
+    :label {network.essid == "lo" ? "Not connected" : network.essid}
+    :class "left-top-plite"
+  )
+)
 )
 (defwidget bluetooth_qs []
   (eventbox :onrightclick "blueman-manager &"
@@ -94,5 +103,17 @@
                             :icon "󱎖"
                             :label "Dark mode"
                             :class "left-bottom-plite"
+    )
+)
+(deflisten battery_mode :initial "balanced"
+  "scripts/battery_saver.sh init")
+
+(defwidget battery_qs []
+    (quick_settings_button  
+        :condition {battery_mode == "power-saver"} 
+        :action "scripts/battery_saver.sh"
+        :icon {battery_mode == "power-saver" ? "󰌢" : battery_mode == "performance" ? "󱐋" : "󰂄"}
+        :label {battery_mode == "power-saver" ? "Power Saver" : battery_mode == "performance" ? "Performance" : "Balanced"}
+        :class "battery-plite"
     )
 )

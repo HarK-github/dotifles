@@ -3,10 +3,10 @@
     (box :orientation "h" 
          :space-evenly false 
          :class "workspaces" 
-         :halign "center" ;; Centers the "taskbar"
+         :halign "center"
       (for w in workspaces
         (button 
-        :visible {w.id != -98 && w.id != "-98"}
+          :visible {w.id != -98}
           :class "workspace ${current_workspace == w.id ? 'current' : ''} ${w.occupied ? 'occupied' : ''}" 
           :onclick "hyprctl dispatch workspace ${w.id}" 
           (label :text "${w.icon}" :class "ws-icon")

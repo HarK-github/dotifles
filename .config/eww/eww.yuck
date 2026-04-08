@@ -16,8 +16,8 @@
 (include "modules/weather.yuck")
 (include "modules/picker.yuck")
 (include "modules/osettings.yuck")
-(include "modules/start_menu.yuck")
-
+;; (include "modules/start_menu.yuck")
+(include "modules/todo.yuck")
 (include "modules/logo.yuck")
 (include "modules/workspaces.yuck")
 (include "modules/taskbar.yuck")
@@ -28,4 +28,4 @@
 (include "modules/recorder_menu.yuck")
 (include "modules/bg_widgets.yuck")
 (include "modules/brightness.yuck")
-
+ 

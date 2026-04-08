@@ -26,14 +26,16 @@
     (box :class "bar-widget" :orientation "h" :space-evenly true
 
         (box :orientation "h" :space-evenly false :halign "start"
-           (osettings-button) 
+          
             (workspaces)
         )
 
       (box :orientation "h" :space-evenly false :halign "center"
       
 	       (box :orientation "h" :space-evenly false :halign "center" :spacing 10
-            
+             (osettings-button) 
+
+           (bar-music)
             (taskbar)
        
             

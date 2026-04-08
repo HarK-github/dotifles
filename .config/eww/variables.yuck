@@ -44,16 +44,10 @@
 (defvar apps '{"pinned": [], "apps": [], "filtered": [], "search": false}')(deflisten workspaces :initial "[]" "scripts/workspaces.sh")
 
 (deflisten current_workspace :initial "1" "scripts/get_active_workspace.sh")
-;; Get Day (1-31)
-(defpoll calendar_day :interval "10h" "date '+%d'")
-
-;; Get Month (0-11) - Note: we subtract 1 because JS/GTK months start at 0
-(defpoll calendar_month :interval "10h" "scripts/get_month.sh")
-
-;; Get Year
-(defpoll calendar_year :interval "10h" "date '+%Y'")
-
+;; Get Day (1-31)  
 ;; Toggle state
 (defvar show_calendar false)
 (deflisten bluetooth :initial '{"enabled": false, "connected": false, "device": "Off"}'
   "scripts/bluetooth_listener.sh")
+
+ 

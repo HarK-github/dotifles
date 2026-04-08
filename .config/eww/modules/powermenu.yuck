@@ -8,7 +8,8 @@
 )
 
 (defwidget powermenu []
-    (box :orientation "h" :space-evenly true :valign "center" :halign "center" :class "powermenu-box"
+
+    (box :orientation "h" :space-evenly true :valign "center" :halign "center" :class "powermenu-box" 
         (powermenu_entry    :label "Power off" 
                             :icon "󰐥" 
                             :onclick "systemctl poweroff")

@@ -4,7 +4,7 @@
             (big_clock)
         )
         (box :orientation "h" :space-evenly false :valign "center"
-            (weather)
+            (todo_widget)
         )
     )
 )

@@ -64,3 +64,81 @@ To prevent the "big box" from appearing during transitions, ensure your window g
 ```
 
 Would you like me to help you write a specific **SCSS mixin** for this so you can apply the "Glass/Blur" look to all your widgets at once?
+
+
+
+
+
+
+
+
+
+
+
+## Start menu
+Great! Let me teach you how to create a two-column layout in EWW step by step.
+
+## The Core Concept
+
+In EWW, layouts are built using **boxes**. A single column is a vertical box. Two columns is a **horizontal box** containing two **vertical boxes**.
+
+## Structure Breakdown
+
+### Single Column (Your Original)
+```yuck
+(scroll
+  (box :orientation "v"    ; Vertical box = one column
+    (widget-1)
+    (widget-2)
+    (widget-3)
+  )
+)
+```
+
+### Two Columns (What You Want)
+```yuck
+(scroll
+  (box :orientation "h"    ; Horizontal box = columns side by side
+    
+    ;; LEFT COLUMN
+    (box :orientation "v" :hexpand true    ; Vertical box inside
+      (widget-1)
+      (widget-2)
+    )
+    
+    ;; RIGHT COLUMN  
+    (box :orientation "v" :hexpand true    ; Another vertical box
+      (widget-3)
+      (widget-4)
+    )
+  )
+)
+```
+
+## Key Properties to Understand
+
+| Property | Purpose | Example |
+|----------|---------|---------|
+| `:orientation "v"` | Vertical layout (stacks top to bottom) | Used for columns and sections |
+| `:orientation "h"` | Horizontal layout (stacks left to right) | Used to create columns |
+| `:hexpand true` | Expands horizontally to fill available space | Makes columns share width equally |
+| `:vexpand true` | Expands vertically to fill available space | Makes content fill height |
+| `:spacing` | Gap between child elements | `:spacing 12` adds 12px between widgets |
+
+## Practical Examples
+
+### Example 1: Simple Two Columns
+```yuck
+(box :orientation "h" :spacing 12
+  (box :orientation "v" :hexpand true
+    (label :text "Left Column")
+    (button :onclick "echo 'Left'" "Click Me")
+  )
+  (box :orientation "v" :hexpand true
+    (label :text "Right Column")
+    (button :onclick "echo 'Right'" "Click Me")
+  )
+)
+```
+
+###
