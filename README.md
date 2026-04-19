@@ -6,14 +6,19 @@
 Tested on Ubuntu Hyprland
  
 <br>
+<div align="center">
 
-## 🖥️ Desktop Showcase
+| Focus Mode | Workspace Overview |
+|:----------:|:-----------------:|
+| <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1246e505-fc55-4904-bac2-339ca81cf0a4" /> | <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ddbc765c-2312-4456-9e6d-699556b256a5" /> |
 
-| Focus Mode | Workspace Overview | Terminal Vision |
-|:----------:|:-----------------:|:---------------:|
-| <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1246e505-fc55-4904-bac2-339ca81cf0a4" /> | <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ddbc765c-2312-4456-9e6d-699556b256a5" /> | <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83285ff7-682e-4f59-90ff-5abc562313e5" /> |
+<br>
 
----
+| **Terminal Vision** |
+|:----------:|
+| <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83285ff7-682e-4f59-90ff-5abc562313e5" /> |
+
+</div>
 
 ## ✨ Features
 
