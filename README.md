@@ -70,7 +70,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ---
 
 <div align="center">
-  <sub>Built with 🧡 by a linux enthusiast.</sub>
+  <sub>Built with 🧡 by a @Hark-github enthusiast.</sub>
 </div>
 
 </div> 
